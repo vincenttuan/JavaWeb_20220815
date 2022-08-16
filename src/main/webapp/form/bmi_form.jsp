@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/pure-min.css">
 		<meta charset="UTF-8">
 		<title>BMI</title>
 		<script type="text/javascript">
@@ -31,9 +32,9 @@
 			}
 		</script>
 	</head>
-	<body>
+	<body style="padding: 15px">
 		
-		<form method="post" onsubmit="return checkData()" enctype="application/x-www-form-urlencoded" action="/JavaWeb_20220815/servlet/bmi">
+		<form class="pure-form" method="post" onsubmit="return checkData()" enctype="application/x-www-form-urlencoded" action="/JavaWeb_20220815/servlet/bmi">
 			<fieldset>
 				<legend>BMI Form 1</legend>
 				身高: <input type="number" id="height" name="height" placeholder="請輸入身高" required="required"><p />
@@ -43,7 +44,7 @@
 			</fieldset>
 		</form>
 		<p />
-		<form method="post" action="/JavaWeb_20220815/servlet/bmi">
+		<form class="pure-form" method="post" action="/JavaWeb_20220815/servlet/bmi">
 			<fieldset>
 				<legend>BMI Form 2</legend>
 				身高: <input type="range" id="height" name="height" min="1" max="300" onmousemove="update(this.value, 'height_value')" onchange="update(this.value, 'height_value')"> <span id="height_value"></span><p />
