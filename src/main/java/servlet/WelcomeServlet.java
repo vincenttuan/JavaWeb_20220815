@@ -18,6 +18,7 @@ public class WelcomeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
 		out.println("Welcome doGet()... " + new Date());
+		
 	}
 	
 	// 通常用於表單的請求
