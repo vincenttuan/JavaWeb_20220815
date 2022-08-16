@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import yahoofinance.YahooFinance;
+
 @WebServlet("/servlet/exchange")
 public class ExchangeServlet extends HttpServlet {
 
@@ -19,7 +21,7 @@ public class ExchangeServlet extends HttpServlet {
 		
 		// 得到匯率(使用 YahooFinance Java API)
 		String symbol = "TWD" + currency + "=x"; // 例如: TWDUSD=x, TWDJPY=x ...
-		double rate = 0.033;
+		double rate = YahooFinance.get(symbol).getQuote().getPrice().doubleValue();
 		
 		// 計算結果
 		double result = amount * rate;
