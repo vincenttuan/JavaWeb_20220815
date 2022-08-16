@@ -15,7 +15,7 @@
 				姓名: <input type="text" id="username" name="username" placeholder="請輸入姓名" required="required"><p />
 				程式: <input type="checkbox" id="program" name="program" value="C" />C
 					 <input type="checkbox" id="program" name="program" value="VB" />VB
-					 <input type="checkbox" id="program" name="program" value="Java" />Java
+					 <input type="checkbox" id="program" name="program" value="Java" checked required="required"/>Java
 					 <input type="checkbox" id="program" name="program" value="Python" />Python
 					 <p />
 				<button type="reset" class="pure-button">清除</button>
