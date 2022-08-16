@@ -21,16 +21,25 @@ public class BMIServlet extends HttpServlet {
 		// 取得表單資料
 		String height = req.getParameter("height");
 		String weight = req.getParameter("weight");
-		// 資料整理/處理
-		double h = Double.parseDouble(height);
-		double w = Double.parseDouble(weight);
-		// 商業邏輯處理(計算 bmi 值)
-		double bmi = w / Math.pow(h/100, 2);
+		
+		double bmi = 0;
+		String errorMessage = "";
+		// 資料檢查
+		if(height != null && !height.isBlank() && weight != null && !weight.isBlank()) {
+			// 資料整理/處理
+			double h = Double.parseDouble(height);
+			double w = Double.parseDouble(weight);
+			// 商業邏輯處理(計算 bmi 值)
+			bmi = w / Math.pow(h/100, 2);
+		} else {
+			errorMessage = "請輸入正確的身高與體重";
+		}
 		// 回應結果
 		PrintWriter out = resp.getWriter();
 		out.println("<html>");
 		out.println("BMI 計算結果: ");
-		out.println(String.format("%.2f", bmi));
+		out.println(String.format("%.2f ", bmi));
+		out.print(errorMessage);
 		out.println("</html>");
 	}
 	
