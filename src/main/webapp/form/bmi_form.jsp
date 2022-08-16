@@ -27,7 +27,7 @@
 			}
 			
 			function update(value, tagName) {
-				document.getElementById(tagName).innetText = value;
+				document.getElementById(tagName).innerText = value;
 			}
 		</script>
 	</head>
@@ -46,8 +46,8 @@
 		<form method="post" action="/JavaWeb_20220815/servlet/bmi">
 			<fieldset>
 				<legend>BMI Form 2</legend>
-				身高: <input type="range" id="height" name="height" min="1" max="300" onchange="update(this.value, 'height_value')"> <span id="height_value"></span><p />
-				體重: <input type="range" id="weight" name="weight" min="1" max="300" onchange="update(this.value, 'weight_value')"> <span id="weight_value"></span><p />
+				身高: <input type="range" id="height" name="height" min="1" max="300" onmousemove="update(this.value, 'height_value')" onchange="update(this.value, 'height_value')"> <span id="height_value"></span><p />
+				體重: <input type="range" id="weight" name="weight" min="1" max="300" onmousemove="update(this.value, 'height_value')" onchange="update(this.value, 'weight_value')"> <span id="weight_value"></span><p />
 				<button type="reset">清除</button>
 				<button type="submit">計算</button>
 			</fieldset>
