@@ -20,7 +20,6 @@ public class HelloServlet extends GenericServlet {
 		// 請求相關程式 (取得使用者所帶入的參數)
 		//String user = "John";
 		String user = req.getParameter("username");
-		
 		// 回應相關程式 (回應使用者網頁,文字,檔案 etc...)
 		PrintWriter out = res.getWriter();
 		out.println("<html>");
