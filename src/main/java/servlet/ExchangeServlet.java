@@ -19,12 +19,19 @@ public class ExchangeServlet extends HttpServlet {
 		int amount = Integer.parseInt(req.getParameter("amount"));
 		String currency = req.getParameter("currency");
 		
+		System.out.println(amount);
+		System.out.println(currency);
+		
 		// 得到匯率(使用 YahooFinance Java API)
 		String symbol = "TWD" + currency + "=x"; // 例如: TWDUSD=x, TWDJPY=x ...
+		System.out.println(symbol);
+		
 		double rate = YahooFinance.get(symbol).getQuote().getPrice().doubleValue();
+		System.out.println(rate);
 		
 		// 計算結果
 		double result = amount * rate;
+		System.out.println(result);
 		
 		// 透過分派器將資料傳遞給 /form/exchange_form.jsp
 		// 1. 建立分派器
