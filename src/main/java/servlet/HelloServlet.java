@@ -18,7 +18,7 @@ public class HelloServlet extends GenericServlet {
 	@Override
 	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
 		// 請求與回應文件編碼設定(中文支援)
-		req.setCharacterEncoding("utf-8"); // res utf-8 編碼
+		req.setCharacterEncoding("utf-8"); // req utf-8 編碼
 		res.setCharacterEncoding("utf-8"); // res utf-8 編碼 
 		res.setContentType("text/html;charset=utf-8"); // 回應文件 utf-8 編碼 (給前端判斷使用)
 		
