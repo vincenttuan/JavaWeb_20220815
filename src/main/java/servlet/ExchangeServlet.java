@@ -17,7 +17,7 @@ public class ExchangeServlet extends HttpServlet {
 		int amount = Integer.parseInt(req.getParameter("amount"));
 		String currency = req.getParameter("currency");
 		
-		// 得到匯率
+		// 得到匯率(使用 YahooFinance Java API)
 		String symbol = "TWD" + currency + "=x"; // 例如: TWDUSD=x, TWDJPY=x ...
 		double rate = 0.033;
 		
