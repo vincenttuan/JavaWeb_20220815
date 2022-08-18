@@ -26,6 +26,8 @@
 						<tr>
 							<th rowspan="2" valign="middle">序號</th>
 							<th colspan="4" align="center">號碼</th>
+							<th rowspan="2" valign="middle">修改</th>
+							<th rowspan="2" valign="middle">刪除</th>
 						</tr>
 						<tr>
 							<th>一</th>
@@ -41,6 +43,8 @@
 								<c:forEach var="n" items="${ num }">
 									<td>${ n }</td>
 								</c:forEach>
+								<td>修改</td>
+								<td>刪除</td>
 							</tr>
 						</c:forEach>
 					</tbody>
