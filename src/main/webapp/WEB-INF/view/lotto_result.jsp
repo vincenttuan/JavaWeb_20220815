@@ -17,7 +17,7 @@
 				<p />
 				號碼: ${ nums }
 				<p />
-				<button type="submit">返回</button>
+				<button type="submit" class="pure-button">返回</button>
 			</fieldset>
 		</form>
 	</body>
