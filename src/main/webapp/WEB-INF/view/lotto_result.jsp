@@ -20,5 +20,11 @@
 				<button type="submit" class="pure-button">返回</button>
 			</fieldset>
 		</form>
+		<form class="pure-form">
+			<fieldset>
+				<legend>Lotto list</legend>
+				${ lottos }
+			</fieldset>
+		</form>
 	</body>
 </html>
