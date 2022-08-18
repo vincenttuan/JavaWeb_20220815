@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -32,6 +33,7 @@
 							<th>號碼</th>
 						</tr>
 					</thead>
+					<!--  
 					<tbody>
 						<% List<List<Integer>> list = (List<List<Integer>>)request.getAttribute("lottos"); %>
 						<% for(int i=0;i<list.size();i++) {  %>
@@ -40,6 +42,15 @@
 								<td><%=list.get(i) %></td>
 							</tr>
 						<% } %>
+					</tbody>
+					-->
+					<tbody>
+						<c:forEach varStatus="status" var="num" items="${ lottos }">
+							<tr>
+								<td>${ status.index }</td>
+								<td>${ num }</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</fieldset>
