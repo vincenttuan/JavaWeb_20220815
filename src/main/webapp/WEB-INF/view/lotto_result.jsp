@@ -11,9 +11,9 @@
 		<form class="pure-form" action="${ pageContext.request.contextPath }/form/lotto_form.jsp">
 			<fieldset>
 				<legend>Lotto Result</legend>
-				姓名: <% out.println(request.getAttribute("username")); %> 
-					<%=request.getAttribute("username") %> 
-					${ username }
+				姓名: <% out.println(request.getAttribute("username")); %> <!-- 傳統 JSP 語法 -->
+					<%=request.getAttribute("username") %> <!-- 傳統 JSP 語法 --> 
+					${ username } <!-- JSP EL 語法 -->
 				<p />
 				號碼: ${ nums }
 				<p />
