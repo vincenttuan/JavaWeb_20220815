@@ -17,7 +17,7 @@
 		<li><a href="${ pageContext.request.contextPath }/form/program_form.jsp">program_form.jsp</a></li>
 		<li><a href="${ pageContext.request.contextPath }/servlet/image?name=f18">ImageServlet 帶參數 name=f18</a></li>
 		<li><a href="${ pageContext.request.contextPath }/form/exchange_form.jsp">exchange_form.jsp</a></li>
-		<li><a href="${ pageContext.request.contextPath }/form/lotto_form.jsp">lotto_form.jsp (MVC 版)</a></li>
+		<li><a href="${ pageContext.request.contextPath }/servlet/lotto">/servlet/lotto (MVC 版)</a></li>
 		
 	</ul>
 </body>
