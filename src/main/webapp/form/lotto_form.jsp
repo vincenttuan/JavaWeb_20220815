@@ -11,7 +11,7 @@
 		<form class="pure-form" method="post" action="${ pageContext.request.contextPath }/servlet/lotto">
 			<fieldset>
 				<legend>Lotto Form</legend>
-				姓名: <input type="text" id="username" name="username" required="required" />
+				姓名: <input type="text" id="username" name="username" value="John" required="required" />
 				<p />
 				<button type="submit" class="pure-button pure-button-primary">電腦選號</button>
 			</fieldset>
