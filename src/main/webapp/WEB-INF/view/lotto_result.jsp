@@ -1,3 +1,4 @@
+<%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,7 +24,24 @@
 		<form class="pure-form">
 			<fieldset>
 				<legend>Lotto list</legend>
-				${ lottos }
+				原始資料: ${ lottos } <p />
+				<table class="pure-table pure-table-bordered">
+					<thead>
+						<tr>
+							<th>序號</th>
+							<th>號碼</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% List<List<Integer>> list = (List<List<Integer>>)request.getAttribute("lottos"); %>
+						<% for(int i=0;i<list.size();i++) {  %>
+							<tr>
+								<td><%=i %></td>
+								<td><%=list.get(i) %></td>
+							</tr>
+						<% } %>
+					</tbody>
+				</table>
 			</fieldset>
 		</form>
 	</body>
