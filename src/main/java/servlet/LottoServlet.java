@@ -25,6 +25,7 @@ public class LottoServlet extends HttpServlet {
 		req.setAttribute("lottos", lottoService.getLottos());
 		// 執行內部重導
 		rd.forward(req, resp);
+		
 	}
 
 	@Override
