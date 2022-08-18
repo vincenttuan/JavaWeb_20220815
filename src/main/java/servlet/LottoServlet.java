@@ -29,6 +29,7 @@ public class LottoServlet extends HttpServlet {
 		// 準備要傳送給 lotto_result.jsp 來呈現的資料
 		req.setAttribute("username", username);
 		req.setAttribute("nums", nums);
+		req.setAttribute("lottos", lottoService.getLottos());
 		// 執行內部重導
 		rd.forward(req, resp); // 執行內部重導(重導到 /WEB-INF/view/lotto_result.jsp)
 		
