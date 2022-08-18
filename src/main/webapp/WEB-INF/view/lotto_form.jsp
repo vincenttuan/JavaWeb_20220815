@@ -43,8 +43,8 @@
 								<c:forEach var="n" items="${ num }">
 									<td>${ n }</td>
 								</c:forEach>
-								<td>修改</td>
-								<td>刪除</td>
+								<td><a href="${ pageContext.request.contextPath }/servlet/lotto?mode=update&index=${ status.index }">修改</a></td>
+								<td><a href="${ pageContext.request.contextPath }/servlet/lotto?mode=delete&index=${ status.index }">刪除</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
