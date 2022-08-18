@@ -19,8 +19,8 @@ public class LottoServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// 透過分派器將資料傳遞給 /form/lotto_form.jsp 來呈現資訊
-		RequestDispatcher rd = req.getRequestDispatcher("/form/lotto_form.jsp");
+		// 透過分派器將資料傳遞給 /WEB-INF/view/lotto_form.jsp 來呈現資訊
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/lotto_form.jsp");
 		// 準備要傳送給 lotto_form.jsp 來呈現的資料
 		req.setAttribute("lottos", lottoService.getLottos());
 		// 執行內部重導
