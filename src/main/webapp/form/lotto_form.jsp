@@ -8,7 +8,7 @@
 		<title>Lotto From</title>
 	</head>
 	<body style="padding: 15px">
-		<form class="pure-form" method="post" action="action="${ pageContext.request.contextPath }/servlet/lotto">
+		<form class="pure-form" method="post" action="${ pageContext.request.contextPath }/servlet/lotto">
 			<fieldset>
 				<legend>Lotto Form</legend>
 				姓名: <input type="text" id="username" name="username" required="required" />
