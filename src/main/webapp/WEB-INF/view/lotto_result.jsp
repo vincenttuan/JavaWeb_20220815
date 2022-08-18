@@ -8,7 +8,7 @@
 		<title>Lotto Result</title>
 	</head>
 	<body style="padding: 15px">
-		<form action="${ pageContext.request.contextPath }/form/lotto_form.jsp">
+		<form class="pure-form" action="${ pageContext.request.contextPath }/form/lotto_form.jsp">
 			<fieldset>
 				<legend>Lotto Result</legend>
 				姓名: <% out.println(request.getAttribute("username")); %> 
