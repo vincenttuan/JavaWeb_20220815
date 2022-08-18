@@ -19,7 +19,7 @@ public class LottoServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String mode = req.getParameter("mode"); // 取得模式
+		String mode = req.getParameter("mode") + ""; // 取得模式
 		int index = 0;
 		
 		// 模式運行
