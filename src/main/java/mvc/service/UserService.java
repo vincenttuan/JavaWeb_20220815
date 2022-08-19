@@ -6,8 +6,8 @@ import java.security.MessageDigest;
 import mvc.dao.UserDao;
 import mvc.entity.User;
 
-public class UserService {
-	private UserDao userDao = new UserDao();
+public class UserService extends BaseService {
+	private UserDao userDao = new UserDao(); // User 資料庫存取服務
 	
 	public int add(String username, String password, String salary) throws Exception {
 		User user = new User();
@@ -15,15 +15,11 @@ public class UserService {
 		user.setUsername(username);
 		
 		// 2. 放入加密過後的 password
-		MessageDigest md5 = MessageDigest.getInstance("MD5");
 		byte[] result = md5.digest(password.getBytes());
 		String encryptPassword = String.format("%032X", new BigInteger(result));
 		user.setPassword(encryptPassword);
 		
 		// 3. 放入加密過後的 salary
-		String path = "src/main/java/mvc/key/user.key"; // 密鑰位置
-		EncryptDESService des = new EncryptDESService(); // 建立 DES 加密服務
-		des.genKey(path); // 產生或使用密鑰
 		byte[] encryptSalary = des.encrytor(salary);
 		user.setSalary(encryptSalary);
 		
