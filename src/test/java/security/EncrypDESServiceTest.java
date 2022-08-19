@@ -3,12 +3,12 @@ package security;
 import java.math.BigInteger;
 import java.util.Arrays;
 
-import mvc.service.EncrypDESService;
+import mvc.service.EncryptDESService;
 
 public class EncrypDESServiceTest {
 	public static void main(String[] args) throws Exception {
 		String path = "src/main/java/mvc/key/user.key";
-		EncrypDESService de1 = new EncrypDESService();
+		EncryptDESService de1 = new EncryptDESService();
 		de1.genKey(path);
 
 		String msg = "巨匠電腦 Java 課程";

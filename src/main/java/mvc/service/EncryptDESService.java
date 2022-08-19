@@ -18,7 +18,7 @@ import javax.crypto.SecretKey;
  * （第 8、16、24、32、40、48、56、64 位是校驗位， 使得每個密鑰都有奇數個 1）
  * 分組後的明文組和 56 位的密鑰按位替代或交換的方法形成密文組的加密方法。
 */
-public class EncrypDESService {
+public class EncryptDESService {
 	
 	// KeyGenerator 提供對稱密鑰生成器的功能，支持各種演算法
     private KeyGenerator keygen;
