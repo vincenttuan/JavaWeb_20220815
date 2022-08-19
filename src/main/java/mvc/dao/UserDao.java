@@ -56,7 +56,7 @@ public class UserDao {
 				user.setUsername(rs.getString("username"));
 				user.setPassword(rs.getString("password"));
 				user.setSalary(rs.getBytes("salary"));
-				user.setCreatetime(rs.getDate("createtime"));
+				user.setCreatetime(rs.getTimestamp("createtime"));
 				// 將 user 紀錄注入到 users 集合中
 				users.add(user);
 			}
