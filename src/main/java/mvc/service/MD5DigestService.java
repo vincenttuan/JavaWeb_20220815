@@ -3,7 +3,7 @@ package mvc.service;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 
-// MD5 加密與比對
+// MD5 加密與比對 (單向)
 public class MD5DigestService {
 	// 取得加密資料
 	public static String getEncryptString(String input) {
