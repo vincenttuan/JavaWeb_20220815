@@ -32,11 +32,12 @@ public class UserController extends HttpServlet {
 		try {
 			userService.add(username, password, salary);
 		} catch (Exception e) {
+			e.printStackTrace();
 			resp.sendError(500, e.getMessage());
 			return;
 		}
 		
-		resp.sendRedirect("./mvc/user");  // 重導到首頁
+		resp.sendRedirect("./user");  // 重導到首頁
 	}
 	
 }
