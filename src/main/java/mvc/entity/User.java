@@ -1,12 +1,13 @@
 package mvc.entity;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class User {
 	private Integer id;
 	private String username;
 	private String password; // MD5 password
-	private Integer salary;  // DES 解密後的資料
+	private byte[] salary;  // DES 加密後的資料
 	private Date createtime;
 	
 	public Integer getId() {
@@ -27,10 +28,10 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Integer getSalary() {
+	public byte[] getSalary() {
 		return salary;
 	}
-	public void setSalary(Integer salary) {
+	public void setSalary(byte[] salary) {
 		this.salary = salary;
 	}
 	public Date getCreatetime() {
@@ -42,9 +43,10 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", salary=" + salary
-				+ ", createtime=" + createtime + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", salary="
+				+ Arrays.toString(salary) + ", createtime=" + createtime + "]";
 	}
+	
 	
 	
 	
