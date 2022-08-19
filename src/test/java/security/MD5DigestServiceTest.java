@@ -12,7 +12,12 @@ public class MD5DigestServiceTest {
 		// 假設 encryptString 是存放在資料欄位中的密碼
 		String encryptString = "006F52E9102A8D3BE2FE5614F42BA989";
 		// 資料比對
-		System.out.println(MD5DigestService.equals(input, encryptString));
+		if(MD5DigestService.equals(input, encryptString)) {
+			System.out.println("驗證通過");
+		} else {
+			throw new RuntimeException("驗證不通過");
+		}
+		
 	}
 	
 }
