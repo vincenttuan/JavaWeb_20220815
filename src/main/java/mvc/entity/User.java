@@ -9,6 +9,7 @@ public class User {
 	private Integer salary;  // DES 解密後的資料
 	private Date createtime;
 	
+	
 	public Integer getId() {
 		return id;
 	}
