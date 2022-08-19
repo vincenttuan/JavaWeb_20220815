@@ -3,7 +3,11 @@ package mvc.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.sql.rowset.serial.SerialBlob;
 
@@ -24,6 +28,7 @@ public class UserDao {
 		}
 	}
 	
+	// 新增
 	public int add(User user) {
 		int rowcount = 0;
 		String sql = "insert into user(username, password, salary) values(?, ?, ?)";
@@ -37,5 +42,30 @@ public class UserDao {
 		}
 		return rowcount;
 	}
+	
+	// 查詢全部
+	public List<User> queryAll() {
+		List<User> users = new ArrayList<>();
+		String sql = "select id, username, password, salary, createtime from user order by id";
+		try(Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);) {
+			
+			while (rs.next()) {
+				User user = new User();
+				user.setId(rs.getInt("id"));
+				user.setUsername(rs.getString("username"));
+				user.setPassword(rs.getString("password"));
+				user.setSalary(rs.getBytes("salary"));
+				user.setCreatetime(rs.getDate("createtime"));
+				// 將 user 紀錄注入到 users 集合中
+				users.add(user);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return users;
+	}
+	
 	
 }
