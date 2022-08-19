@@ -11,17 +11,17 @@ public class EncrypDESServiceTest {
 		EncryptDESService de1 = new EncryptDESService(); // 建立 DES 加密服務
 		de1.genKey(path); // 產生或使用密鑰
 		
-		// 原文
+		// 明文
 		String msg = "巨匠電腦 Java 課程";
 		System.out.println("明文是:" + msg);
 		
 		// 加密
-		byte[] encontent = de1.encrytor(msg); // 加密
+		byte[] encontent = de1.encrytor(msg); // 將明文進行加密
 		System.out.println("加密後:" + Arrays.toString(encontent));
 		System.out.println("加密後(16進位):" + String.format("%X", new BigInteger(encontent)));
 		
 		// 解密
-		byte[] decontent = de1.decryptor(encontent); // 解密
+		byte[] decontent = de1.decryptor(encontent); // 將加密的內容進行解密
 		System.out.println("解密後:" + new String(decontent));
 	}
 }
