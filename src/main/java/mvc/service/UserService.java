@@ -9,7 +9,6 @@ import mvc.entity.User;
 public class UserService extends BaseService {
 	
 	private UserDao userDao = new UserDao(); // User 資料庫存取服務
-	
 	public int add(String username, String password, String salary) throws Exception {
 		User user = new User();
 		// 1. 放入明文 username
