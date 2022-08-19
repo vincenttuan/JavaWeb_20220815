@@ -2,7 +2,7 @@ package service;
 
 import org.junit.Test;
 
-public class TestLottoService {
+public class LottoServiceTest {
 	
 	@Test
 	public void test() {
