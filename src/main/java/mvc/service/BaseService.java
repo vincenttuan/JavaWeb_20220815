@@ -8,7 +8,8 @@ public class BaseService {
 	protected EncryptDESService des; // 建立 DES 加密服務
 	
 	public BaseService() {
-		path = "src/main/java/mvc/key/user.key"; // 密鑰位置
+		//path = "src/main/java/mvc/key/user.key"; // 密鑰位置
+		path = "C:\\Users\\MB-207\\eclipse-workspace\\JavaWeb_20220815\\src\\main\\java\\mvc\\key\\user.key"; // 密鑰位置(絕對路徑) 
 		des = new EncryptDESService(); // 建立 DES 加密服務
 		try {
 			des.genKey(path); // 產生或使用密鑰
