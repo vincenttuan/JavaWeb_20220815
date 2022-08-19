@@ -16,7 +16,7 @@ public class EncrypDESServiceTest {
 		System.out.println("明文是:" + msg);
 		
 		// 加密
-		byte[] encontent = de1.encrytor(msg); // 將明文進行加密
+		byte[] encontent = de1.encrytor(msg); // 將明文進行加密 , encontent 會存放在資料表欄位中
 		System.out.println("加密後:" + Arrays.toString(encontent));
 		System.out.println("加密後(16進位):" + String.format("%X", new BigInteger(encontent)));
 		
