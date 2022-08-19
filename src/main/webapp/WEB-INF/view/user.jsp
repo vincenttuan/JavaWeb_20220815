@@ -25,7 +25,7 @@
 				<table class="pure-table pure-table-bordered">
 					<thead>
 						<tr>
-							<th>序號</th><th>帳號</th><th>密碼</th><th>薪資</th><th>建立時間</th>
+							<th>序號</th><th>帳號</th><th>密碼(加密)</th><th>薪資(加密)</th><th>薪資(解密)</th><th>建立時間</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -35,6 +35,7 @@
 							<td>${ user.username }</td>
 							<td>${ user.password }</td>
 							<td>${ user.salary }</td>
+							<td>${ user.salaryDecrypt }</td>
 							<td>${ user.createtime }</td>
 						</tr>
 						</c:forEach>
