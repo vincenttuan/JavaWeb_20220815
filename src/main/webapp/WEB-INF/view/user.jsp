@@ -12,10 +12,10 @@
 		<form class="pure-form" method="psot" action="${ pageContext.request.contextPath }/mvc/user">
 			<fieldset>
 				<legend>User Form</legend>
-				id: <input type="text" id="id" name="id" readonly="readonly" /><p />
-				username: <input type="text" id="username" name="username" placeholder="請輸入 username" required="required" /><p />
-				password: <input type="text" id="password" name="password" placeholder="請輸入 password" required="required" /><p />
-				salary: <input type="text" id="salary" name="salary" placeholder="請輸入 salary" required="required" /><p />
+				序號: <input type="text" id="id" name="id" readonly="readonly" /><p />
+				帳號: <input type="text" id="username" name="username" placeholder="請輸入 username" required="required" /><p />
+				密碼: <input type="text" id="password" name="password" placeholder="請輸入 password" required="required" /><p />
+				薪資: <input type="text" id="salary" name="salary" placeholder="請輸入 salary" required="required" /><p />
 				<button type="submit" class="pure-button pure-button-primary">新增</button>
 			</fieldset>
 		</form>
@@ -25,7 +25,7 @@
 				<table class="pure-table pure-table-bordered">
 					<thead>
 						<tr>
-							<th>id</th><th>username</th><th>password</th><th>salary</th><th>createtime</th>
+							<th>序號</th><th>帳號</th><th>密碼</th><th>薪資</th><th>建立時間</th>
 						</tr>
 					</thead>
 					<tbody>
