@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.sql.rowset.serial.SerialBlob;
+
 import mvc.entity.User;
 
 public class UserDao {
