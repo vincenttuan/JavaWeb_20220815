@@ -2,6 +2,7 @@ package mvc.service;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.util.List;
 
 import mvc.dao.UserDao;
 import mvc.entity.User;
@@ -10,6 +11,7 @@ public class UserService extends BaseService {
 	
 	private UserDao userDao = new UserDao(); // User 資料庫存取服務
 	
+	// 新增 user (含加密資料)
 	public int add(String username, String password, String salary) throws Exception {
 		User user = new User();
 		// 1. 放入明文 username
@@ -28,6 +30,11 @@ public class UserService extends BaseService {
 		UserDao userDao = new UserDao();
 		int rowcount =  userDao.add(user);
 		return rowcount;
+	}
+	
+	// 查詢所有 user
+	public List<User> queryAll() {
+		return userDao.queryAll();
 	}
 	
 }
