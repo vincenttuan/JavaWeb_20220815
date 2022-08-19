@@ -34,6 +34,8 @@ public class UserService extends BaseService {
 	
 	// 查詢所有 user
 	public List<User> queryAll() {
+		// 將 salary 內容解密
+		
 		return userDao.queryAll();
 	}
 	
