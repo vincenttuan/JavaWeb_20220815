@@ -34,6 +34,29 @@ public class UserService extends BaseService {
 		return rowcount;
 	}
 	
+	// 修改 user (含加密資料)
+	public int update(Integer id, String username, String password, String salary) throws Exception {
+		User user = new User();
+		user.setId(id); // 要修改的 id
+		
+		// 1. 放入明文 username
+		user.setUsername(username);
+			
+		// 2. 放入加密過後的 password
+		byte[] result = md5.digest(password.getBytes());
+		String encryptPassword = String.format("%032X", new BigInteger(result));
+		user.setPassword(encryptPassword);
+			
+		// 3. 放入加密過後的 salary
+		byte[] encryptSalary = des.encrytor(salary);
+		user.setSalary(encryptSalary);
+			
+		// 4. 修改程序
+		UserDao userDao = new UserDao();
+		int rowcount =  userDao.update(user); // 修改
+		return rowcount;
+	}
+	
 	// 查詢所有 user
 	public List<User> queryAll() {
 		List<User> users = userDao.queryAll();
