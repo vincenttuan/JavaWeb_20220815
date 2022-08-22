@@ -61,7 +61,7 @@ public class UserController extends HttpServlet {
 		// 取得表單資料
 		String id = req.getParameter("id").trim();
 		String username = req.getParameter("username").trim();
-		String password = req.getParameter("password").trim();
+		String password = req.getParameter("password") == null ? "" : req.getParameter("password").trim();
 		String salary = req.getParameter("salary").trim();
 		
 		// 利用 id 是否有資料來判定是修改還是新增 ?
