@@ -23,8 +23,10 @@ public class UserService extends BaseService {
 		if(!user.getPassword().equals(encryptPassword)) { // 舊密碼不相同
 			return 0;
 		}
-		// 將 new_password 取代舊有的 password
-		return userDao.updatePassword(user.getId(), new_password);
+		// 將 new_password 取代舊有的 password並將新密碼加密
+		result = md5.digest(new_password.getBytes());
+		encryptPassword = String.format("%032X", new BigInteger(result));
+		return userDao.updatePassword(user.getId(), encryptPassword);
 	}
 	
 	// 新增 user (含加密資料)
