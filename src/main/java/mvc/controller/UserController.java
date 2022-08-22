@@ -85,7 +85,7 @@ public class UserController extends HttpServlet {
 			
 		}
 		
-		resp.sendRedirect("./user/");  // 重導到首頁
+		resp.sendRedirect("/JavaWeb_20220815/mvc/user/");  // 重導到首頁
 	}
 	
 }
