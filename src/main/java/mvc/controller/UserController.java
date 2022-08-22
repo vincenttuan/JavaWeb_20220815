@@ -38,7 +38,7 @@ public class UserController extends HttpServlet {
 			Integer id = Integer.parseInt(pathInfo.replace("/", ""));
 			System.out.print("id: " + id + ", ");
 			// 判斷是否有 mode 參數傳入
-			String mode = req.getParameter("mode").trim();
+			String mode = req.getParameter("mode");
 			// 刪除 ?
 			if(mode != null && mode.equals("delete")) {
 				System.out.println("刪除模式");

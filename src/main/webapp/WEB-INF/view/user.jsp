@@ -46,7 +46,7 @@
 							<td>${ user.createtime }</td>
 							<td>
 								<button type="button" 
-										onclick="location.href='${ pageContext.request.contextPath }/mvc/user/${ user.id }';" 
+										onclick="location.href='${ pageContext.request.contextPath }/mvc/user/${ user.id }?mode=delete';" 
 										class="pure-button">刪除</button>
 							</td>
 						</tr>
