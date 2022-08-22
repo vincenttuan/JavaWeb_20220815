@@ -11,7 +11,7 @@
 	<body style="padding: 15px">
 		<form class="pure-form" method="post" action="${ pageContext.request.contextPath }/mvc/user/">
 			<fieldset>
-				<legend>User Form</legend>
+				<legend>User Form (${ buttonName }模式)</legend>
 				序號: <input type="text" value="${ user.id }" id="id" name="id" readonly="readonly" /><p />
 				帳號: <input type="text" value="${ user.username }" id="username" name="username" placeholder="請輸入 username" required="required" /><p />
 				密碼: <input type="text" value="" id="password" name="password" placeholder="請輸入 password" required="required" /><p />
