@@ -35,9 +35,9 @@ public class UserService extends BaseService {
 	}
 	
 	// 修改 user (含加密資料)
-	public int update(Integer id, String username, String password, String salary) throws Exception {
+	public int update(String id, String username, String password, String salary) throws Exception {
 		User user = new User();
-		user.setId(id); // 要修改的 id
+		user.setId(Integer.parseInt(id)); // 轉型要修改的 id
 		
 		// 1. 放入明文 username
 		user.setUsername(username);

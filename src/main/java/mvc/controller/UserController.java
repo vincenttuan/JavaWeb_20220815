@@ -74,6 +74,14 @@ public class UserController extends HttpServlet {
 			}
 		} else {
 			System.out.println("修改模式");
+			try {
+				userService.update(id, username, password, salary);
+			} catch (Exception e) {
+				e.printStackTrace();
+				resp.sendError(500, e.getMessage());
+				return;
+			}
+			
 		}
 		
 		resp.sendRedirect("./user");  // 重導到首頁
