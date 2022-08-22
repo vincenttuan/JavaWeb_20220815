@@ -38,7 +38,7 @@ public class LoginFilter extends HttpFilter {
 			if(user != null) { // 是否登入成功
 				session.setAttribute("user", user); // 將 user(登入者) 物件存放在 session 變數(每一頁(servlet, jsp)都可以使用)中
 				String contextName = req.getServletContext().getServletContextName();
-				res.sendRedirect("/" + contextName + "/mvc/user/");  // 重導到首頁
+				res.sendRedirect("/" + contextName + "/mvc/user/");  // 重導到首頁的方式放行
 			} else {
 				// 重導到 login 畫面
 				RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/login.jsp");
