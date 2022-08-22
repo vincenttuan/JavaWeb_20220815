@@ -17,6 +17,7 @@ import mvc.service.UserService;
  * Delete Get  /mvc/user/5?mode=delete 單筆刪除(刪除id=5的資料)
  * Create Post /mvc/user/              新增
  * Update Post /mvc/user/3             修改(修改id=3的資料)
+ * Update Post /mvc/user/              修改(判斷表單傳來的id欄位是否有資料)
  * */
 
 @WebServlet("/mvc/user/*")
@@ -55,16 +56,24 @@ public class UserController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// 取得表單資料
+		String id = req.getParameter("id");
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		String salary = req.getParameter("salary");
 		
-		try {
-			userService.add(username, password, salary);
-		} catch (Exception e) {
-			e.printStackTrace();
-			resp.sendError(500, e.getMessage());
-			return;
+		// 利用 id 是否有資料來判定是修改還是新增 ?
+		if(id == null || id.trim().length() == 0) { // 新增模式
+			System.out.println("新增模式");
+			try {
+				userService.add(username, password, salary);
+			} catch (Exception e) {
+				e.printStackTrace();
+				resp.sendError(500, e.getMessage());
+				return;
+			}
+		} else {
+			System.out.println("修改模式");
 		}
 		
 		resp.sendRedirect("./user");  // 重導到首頁

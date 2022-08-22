@@ -43,6 +43,22 @@ public class UserDao {
 		return rowcount;
 	}
 	
+	// 修改
+	public int update(User user) {
+		int rowcount = 0;
+		String sql = "update user set username=?, password=?, salary=? where id=?";
+		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setString(1, user.getUsername());
+			pstmt.setString(2, user.getPassword());
+			pstmt.setBytes(3, user.getSalary());
+			pstmt.setInt(4, user.getId());
+			rowcount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rowcount;
+	}
+	
 	// 查詢全部
 	public List<User> queryAll() {
 		List<User> users = new ArrayList<>();
