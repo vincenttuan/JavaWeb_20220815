@@ -44,6 +44,7 @@ public class UserController extends HttpServlet {
 			} else {
 				System.out.println("單筆查詢模式");
 				req.setAttribute("buttonName", "修改");
+				req.setAttribute("user", userService.get(id));
 			}
 		}
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/user.jsp");
