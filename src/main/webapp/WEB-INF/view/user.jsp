@@ -9,7 +9,7 @@
 		<title>User form</title>
 	</head>
 	<body style="padding: 15px">
-		<form class="pure-form" method="post" action="${ pageContext.request.contextPath }/mvc/user/${ user.id }">
+		<form class="pure-form" method="post" action="${ pageContext.request.contextPath }/mvc/user/">
 			<fieldset>
 				<legend>User Form</legend>
 				序號: <input type="text" value="${ user.id }" id="id" name="id" readonly="readonly" /><p />
@@ -17,6 +17,7 @@
 				密碼: <input type="text" value="" id="password" name="password" placeholder="請輸入 password" required="required" /><p />
 				薪資: <input type="text" value="${ user.salaryDecrypt }" id="salary" name="salary" placeholder="請輸入 salary" required="required" /><p />
 				<button type="submit" class="pure-button pure-button-primary">${ buttonName }</button>
+				<button type="button" onclick="location.href='${ pageContext.request.contextPath }/mvc/user/';" class="pure-button pure-button-primary">取消</button>
 			</fieldset>
 		</form>
 		<form class="pure-form">
