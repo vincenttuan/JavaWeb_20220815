@@ -17,7 +17,7 @@ import mvc.service.UserService;
  * Delete Get  /mvc/user/5?mode=delete 單筆刪除(刪除id=5的資料)
  * Create Post /mvc/user/              新增
  * Update Post /mvc/user/3             修改(修改id=3的資料)
- * Update Post /mvc/user/              修改(判斷表單傳來的id欄位是否有資料)
+ * Update Post /mvc/user/              修改(判斷表單傳來的id欄位是否有資料) <-- 下面修改範例是以此規則
  * */
 
 @WebServlet("/mvc/user/*")
