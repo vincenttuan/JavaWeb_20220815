@@ -109,7 +109,7 @@ public class UserDao {
 		return users;
 	}
 	
-	// 查詢單筆
+	// 查詢單筆(根據 id)
 	public User get(Integer id) {
 		User user = null;
 		String sql = "select id, username, password, salary, createtime from user where id=?";
@@ -125,6 +125,28 @@ public class UserDao {
 				user.setCreatetime(rs.getTimestamp("createtime"));
 			}
 			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
+	
+	// 查詢單筆(根據 username)
+	public User get(String username) {
+		User user = null;
+		String sql = "select id, username, password, salary, createtime from user where username=?";
+		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setString(1, username);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) { // 是否有查到資料
+				user = new User();
+				user.setId(rs.getInt("id"));
+				user.setUsername(rs.getString("username"));
+				user.setPassword(rs.getString("password"));
+				user.setSalary(rs.getBytes("salary"));
+				user.setCreatetime(rs.getTimestamp("createtime"));
+			}
+				
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
