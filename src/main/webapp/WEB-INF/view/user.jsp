@@ -47,7 +47,7 @@
 							<td>
 								<button type="button" 
 										onclick="location.href='${ pageContext.request.contextPath }/mvc/user/${ user.id }';" 
-										class="pure-button">取消</button>
+										class="pure-button">刪除</button>
 							</td>
 						</tr>
 						</c:forEach>
