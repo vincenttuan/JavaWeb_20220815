@@ -28,7 +28,7 @@
 				<table class="pure-table pure-table-bordered">
 					<thead>
 						<tr>
-							<th>序號</th><th>帳號</th><th>密碼(加密)</th><th>薪資(加密)</th><th>薪資(解密)</th><th>建立時間</th>
+							<th>序號</th><th>帳號</th><th>密碼(加密)</th><th>薪資(加密)</th><th>薪資(解密)</th><th>建立時間</th><th>刪除</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -44,6 +44,11 @@
 							<td>${ user.salary }</td>
 							<td>${ user.salaryDecrypt }</td>
 							<td>${ user.createtime }</td>
+							<td>
+								<button type="button" 
+										onclick="location.href='${ pageContext.request.contextPath }/mvc/user/${ user.id }';" 
+										class="pure-button">取消</button>
+							</td>
 						</tr>
 						</c:forEach>
 					</tbody>
