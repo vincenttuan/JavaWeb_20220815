@@ -40,7 +40,11 @@
 								</a>
 							</td>
 							<td>${ user.username }</td>
-							<td>${ user.password }</td>
+							<td>
+								<a href="${ pageContext.request.contextPath }/mvc/user/password?id=${ user.id }">
+									${ user.password }
+								</a>
+							</td>
 							<td>${ user.salary }</td>
 							<td>${ user.salaryDecrypt }</td>
 							<td>${ user.createtime }</td>

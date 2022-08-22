@@ -20,7 +20,7 @@
 		<form class="pure-form" onsubmit="return verifyPassword();" action="${ pageContext.request.contextPath }/mvc/user/password">
 			<fieldset>
 				<legend>修改密碼</legend>
-				序號: <input type="text" id="id" name="id" readonly="readonly" /><p />
+				序號: <input type="text" value="${ id }" id="id" name="id" readonly="readonly" /><p />
 				舊密碼: <input type="text" id="password" name="password" required="required" /><p />
 				新密碼: <input type="text" id="new_password" name="new_password" required="required" /><p />
 				新密碼: <input type="text" id="new_password2" name="new_password2" required="required" /> 請再輸入一次<p />
