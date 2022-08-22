@@ -38,7 +38,7 @@ public class UserController extends HttpServlet {
 			Integer id = Integer.parseInt(pathInfo.replace("/", ""));
 			System.out.print("id: " + id + ", ");
 			// 判斷是否有 mode 參數傳入
-			String mode = req.getParameter("mode");
+			String mode = req.getParameter("mode").trim();
 			if(mode != null && mode.equals("delete")) {
 				System.out.println("刪除模式");
 				req.setAttribute("buttonName", "新增");
@@ -58,10 +58,10 @@ public class UserController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 取得表單資料
-		String id = req.getParameter("id");
-		String username = req.getParameter("username");
-		String password = req.getParameter("password");
-		String salary = req.getParameter("salary");
+		String id = req.getParameter("id").trim();
+		String username = req.getParameter("username").trim();
+		String password = req.getParameter("password").trim();
+		String salary = req.getParameter("salary").trim();
 		
 		// 利用 id 是否有資料來判定是修改還是新增 ?
 		if(id == null || id.trim().length() == 0) { // 新增模式
