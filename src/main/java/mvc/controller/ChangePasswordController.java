@@ -30,7 +30,14 @@ public class ChangePasswordController extends HttpServlet {
 		String id = req.getParameter("id");
 		String password = req.getParameter("password");
 		String new_password = req.getParameter("new_password");
-		
+		// 變更密碼
+		int rowcount = userService.changePassword(id, password, new_password);
+		if(rowcount == 1) {
+			String contextName = req.getServletContext().getServletContextName(); // JavaWeb_20220815
+			resp.sendRedirect("/" + contextName + "/mvc/user/");  // 重導到首頁
+		} else {
+			resp.getWriter().print("change password error !");
+		}
 		
 	}
 	
