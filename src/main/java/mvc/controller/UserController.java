@@ -76,7 +76,7 @@ public class UserController extends HttpServlet {
 		} else {
 			System.out.println("修改模式");
 			try {
-				userService.update(id, username, password, salary);
+				userService.update(id, username, salary);
 			} catch (Exception e) {
 				e.printStackTrace();
 				resp.sendError(500, e.getMessage());

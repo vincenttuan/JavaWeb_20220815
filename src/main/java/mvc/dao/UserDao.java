@@ -46,12 +46,11 @@ public class UserDao {
 	// 修改
 	public int update(User user) {
 		int rowcount = 0;
-		String sql = "update user set username=?, password=?, salary=? where id=?";
+		String sql = "update user set username=?, salary=? where id=?";
 		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
 			pstmt.setString(1, user.getUsername());
-			pstmt.setString(2, user.getPassword());
-			pstmt.setBytes(3, user.getSalary());
-			pstmt.setInt(4, user.getId());
+			pstmt.setBytes(2, user.getSalary());
+			pstmt.setInt(3, user.getId());
 			rowcount = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

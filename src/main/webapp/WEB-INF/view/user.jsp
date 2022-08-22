@@ -14,7 +14,9 @@
 				<legend>User Form (${ buttonName }模式)</legend>
 				序號: <input type="text" value="${ user.id }" id="id" name="id" readonly="readonly" /><p />
 				帳號: <input type="text" value="${ user.username }" id="username" name="username" placeholder="請輸入 username" required="required" /><p />
+				${ buttonName=='修改'?'<!--':'' }
 				密碼: <input type="text" value="" id="password" name="password" placeholder="請輸入 password" required="required" /><p />
+				${ buttonName=='修改'?'-->':'' }
 				薪資: <input type="text" value="${ user.salaryDecrypt }" id="salary" name="salary" placeholder="請輸入 salary" required="required" /><p />
 				<button type="submit" class="pure-button pure-button-primary">${ buttonName }</button>
 				<button type="button" onclick="location.href='${ pageContext.request.contextPath }/mvc/user/';" class="pure-button">取消</button>
