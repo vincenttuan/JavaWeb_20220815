@@ -85,7 +85,8 @@ public class UserController extends HttpServlet {
 			
 		}
 		
-		resp.sendRedirect("/JavaWeb_20220815/mvc/user/");  // 重導到首頁
+		String contextName = req.getServletContext().getServletContextName(); // JavaWeb_20220815
+		resp.sendRedirect("/" + contextName + "/mvc/user/");  // 重導到首頁
 	}
 	
 }
