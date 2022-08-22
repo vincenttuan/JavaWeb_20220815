@@ -36,7 +36,7 @@ public class ChangePasswordController extends HttpServlet {
 			String contextName = req.getServletContext().getServletContextName(); // JavaWeb_20220815
 			resp.sendRedirect("/" + contextName + "/mvc/user/");  // 重導到首頁
 		} else {
-			resp.sendError(500, "密碼修改錯誤: 舊密碼輸入不正確");
+			throw new ServletException("密碼修改錯誤: 舊密碼輸入不正確");
 		}
 	}
 	

@@ -11,7 +11,7 @@
   </welcome-file-list>
   
   <error-page>
-  	<error-code>500</error-code>
+  	<exception-type>java.lang.Exception</exception-type>
   	<location>/WEB-INF/view/error.jsp</location>
   </error-page>
   

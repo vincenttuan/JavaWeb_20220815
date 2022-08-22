@@ -12,7 +12,7 @@
 			<fieldset>
 				<legend>錯誤處理</legend>
 				錯誤物件: <%=exception %><p />
-				錯誤訊息: <%=exception.getMessage() %><p />
+				錯誤訊息: <%=exception %><p />
 				<button type="button" 
 						onclick="location.href='${ pageContext.request.contextPath }/mvc/user/';" 
 						class="pure-button">回首頁</button>
