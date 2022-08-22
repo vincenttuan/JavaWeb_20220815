@@ -9,14 +9,14 @@
 		<title>User form</title>
 	</head>
 	<body style="padding: 15px">
-		<form class="pure-form" method="post" action="${ pageContext.request.contextPath }/mvc/user/">
+		<form class="pure-form" method="post" action="${ pageContext.request.contextPath }/mvc/user/${ id }">
 			<fieldset>
 				<legend>User Form</legend>
 				序號: <input type="text" id="id" name="id" readonly="readonly" /><p />
 				帳號: <input type="text" id="username" name="username" placeholder="請輸入 username" required="required" /><p />
 				密碼: <input type="text" id="password" name="password" placeholder="請輸入 password" required="required" /><p />
 				薪資: <input type="text" id="salary" name="salary" placeholder="請輸入 salary" required="required" /><p />
-				<button type="submit" class="pure-button pure-button-primary">新增</button>
+				<button type="submit" class="pure-button pure-button-primary">${ buttonName }</button>
 			</fieldset>
 		</form>
 		<form class="pure-form">
