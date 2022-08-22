@@ -58,6 +58,19 @@ public class UserDao {
 		return rowcount;
 	}
 	
+	// 刪除
+	public int delete(Integer id) {
+		int rowcount = 0;
+		String sql = "delete from user where id=?";
+		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setInt(1, id);
+			rowcount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rowcount;
+	}
+	
 	// 查詢全部
 	public List<User> queryAll() {
 		List<User> users = new ArrayList<>();

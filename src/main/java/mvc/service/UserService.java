@@ -29,7 +29,6 @@ public class UserService extends BaseService {
 		user.setSalary(encryptSalary);
 		
 		// 4. 加入到資料庫中
-		UserDao userDao = new UserDao();
 		int rowcount =  userDao.add(user);
 		return rowcount;
 	}
@@ -47,8 +46,13 @@ public class UserService extends BaseService {
 		user.setSalary(encryptSalary);
 			
 		// 3. 修改程序
-		UserDao userDao = new UserDao();
 		int rowcount =  userDao.update(user); // 修改
+		return rowcount;
+	}
+	
+	// 刪除
+	public int delete(String id) {
+		int rowcount =  userDao.delete(Integer.parseInt(id));
 		return rowcount;
 	}
 	
