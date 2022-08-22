@@ -58,6 +58,20 @@ public class UserDao {
 		return rowcount;
 	}
 	
+	// 修改密碼
+	public int updatePassword(Integer id, String new_password) {
+		int rowcount = 0;
+		String sql = "update user set password=? where id=?";
+		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setString(1, new_password);
+			pstmt.setInt(2, id);
+			rowcount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rowcount;
+	}
+	
 	// 刪除
 	public int delete(Integer id) {
 		int rowcount = 0;

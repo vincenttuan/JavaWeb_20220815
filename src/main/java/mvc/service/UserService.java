@@ -13,6 +13,20 @@ public class UserService extends BaseService {
 	
 	private UserDao userDao = new UserDao(); // User 資料庫存取服務
 	
+	public int changePassword(String id, String password, String new_password) {
+		// 根據 id 得到 user 物件 
+		User user = get(Integer.parseInt(id));
+		if(user == null) return 0;
+		// 驗證 password
+		byte[] result = md5.digest(password.getBytes());
+		String encryptPassword = String.format("%032X", new BigInteger(result));
+		if(!user.getPassword().equals(encryptPassword)) { // 舊密碼不相同
+			return 0;
+		}
+		// 將 new_password 取代舊有的 password
+		return userDao.updatePassword(user.getId(), new_password);
+	}
+	
 	// 新增 user (含加密資料)
 	public int add(String username, String password, String salary) throws Exception {
 		User user = new User();
