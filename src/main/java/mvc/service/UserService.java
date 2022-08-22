@@ -49,4 +49,19 @@ public class UserService extends BaseService {
 		return users;
 	}
 	
+	// 查詢單筆 user
+	public User get(Integer id) {
+		User user = userDao.get(id);
+		if(user != null) {
+			// 將 salary 內容解密
+			try {
+				byte[] decrypt = des.decryptor(user.getSalary()); // 解密
+				user.setSalaryDecrypt(new String(decrypt)); // 轉字串後設定
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return user;
+	}
+	
 }
