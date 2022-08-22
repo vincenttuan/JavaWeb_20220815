@@ -30,7 +30,7 @@
 				<button type="submit" class="pure-button pure-button-primary">修改</button>
 				<button type="button" 
 						onclick="location.href='${ pageContext.request.contextPath }/mvc/user/';"
-						class="pure-button pure-button-primary">取消</button><p />
+						class="pure-button">取消</button><p />
 			</fieldset>
 		</form>
 	</body>
