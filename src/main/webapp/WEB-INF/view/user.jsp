@@ -9,7 +9,7 @@
 		<title>User form</title>
 	</head>
 	<body style="padding: 15px">
-		<form class="pure-form" method="post" action="${ pageContext.request.contextPath }/mvc/user">
+		<form class="pure-form" method="post" action="${ pageContext.request.contextPath }/mvc/user/">
 			<fieldset>
 				<legend>User Form</legend>
 				序號: <input type="text" id="id" name="id" readonly="readonly" /><p />
@@ -31,7 +31,11 @@
 					<tbody>
 						<c:forEach var="user" items="${ users }">
 						<tr>
-							<td>${ user.id }</td>
+							<td>
+								<a href="${ pageContext.request.contextPath }/mvc/user/${ user.id }">
+									${ user.id }
+								</a>
+							</td>
 							<td>${ user.username }</td>
 							<td>${ user.password }</td>
 							<td>${ user.salary }</td>
