@@ -18,7 +18,11 @@
 		<li><a href="${ pageContext.request.contextPath }/servlet/image?name=f18">ImageServlet 帶參數 name=f18</a></li>
 		<li><a href="${ pageContext.request.contextPath }/form/exchange_form.jsp">exchange_form.jsp</a></li>
 		<li><a href="${ pageContext.request.contextPath }/servlet/lotto">/servlet/lotto (MVC 版)</a></li>
-		
+		<hr />
+		<li><a href="${ pageContext.request.contextPath }/mvc/user">/mvc/user (JDBC)</a></li>
+		<li><a href="${ pageContext.request.contextPath }/mvc/product">/mvc/product (REST/JDBC)</a></li>
+		<li><a href="${ pageContext.request.contextPath }/mvc/cart">/mvc/cart (REST/JPA)</a></li>
+		<li><a href="${ pageContext.request.contextPath }/mvc/chat">/mvc/chat (WebSocket)</a></li>
 	</ul>
 </body>
 </html>
