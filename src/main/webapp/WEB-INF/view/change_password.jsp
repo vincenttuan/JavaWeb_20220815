@@ -17,7 +17,10 @@
 		</script>
 	</head>
 	<body style="padding: 15px">
-		<form class="pure-form" onsubmit="return verifyPassword();" action="${ pageContext.request.contextPath }/mvc/user/password">
+		<form class="pure-form" 
+			  onsubmit="return verifyPassword();" 
+			  method="post" 
+			  action="${ pageContext.request.contextPath }/mvc/user/password">
 			<fieldset>
 				<legend>修改密碼</legend>
 				序號: <input type="text" value="${ id }" id="id" name="id" readonly="readonly" /><p />
