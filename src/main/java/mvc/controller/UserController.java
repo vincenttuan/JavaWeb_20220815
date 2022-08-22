@@ -31,7 +31,7 @@ public class UserController extends HttpServlet {
 		
 		if(pathInfo.equals("/")) { // 全部查詢
 			System.out.println("全部查詢模式");
-			
+			req.setAttribute("buttonName", "新增");
 		} else { // 單筆查詢
 			// 將 / 去除後轉 int (Ex: /2 變成 2)
 			Integer id = Integer.parseInt(pathInfo.replace("/", ""));
@@ -43,7 +43,7 @@ public class UserController extends HttpServlet {
 				
 			} else {
 				System.out.println("單筆查詢模式");
-				
+				req.setAttribute("buttonName", "修改");
 			}
 		}
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/user.jsp");
