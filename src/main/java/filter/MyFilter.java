@@ -10,13 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 // 過濾器: 定要要管控的路徑
-@WebFilter(urlPatterns = {"/mvc/user"})
+@WebFilter(urlPatterns = {"/mvc/user/*", "/servlet/*", "/form/*"})
 public class MyFilter extends HttpFilter {
 	@Override
 	protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
 		
-		res.getWriter().print("Stop");
+		//res.getWriter().print("Stop");
+		chain.doFilter(req, res); // 通過 filter
 		
 	}
 }
