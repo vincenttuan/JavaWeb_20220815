@@ -51,8 +51,14 @@ public class UserService extends BaseService {
 	}
 	
 	// 刪除
+	public int delete(Integer id) {
+		int rowcount =  userDao.delete(id);
+		return rowcount;
+	}
+	
+	// 刪除
 	public int delete(String id) {
-		int rowcount =  userDao.delete(Integer.parseInt(id));
+		int rowcount =  delete(Integer.parseInt(id));
 		return rowcount;
 	}
 	

@@ -41,8 +41,8 @@ public class UserController extends HttpServlet {
 			String mode = req.getParameter("mode").trim();
 			if(mode != null && mode.equals("delete")) {
 				System.out.println("刪除模式");
+				userService.delete(id);
 				req.setAttribute("buttonName", "新增");
-				
 			} else {
 				System.out.println("單筆查詢模式");
 				req.setAttribute("buttonName", "修改");
