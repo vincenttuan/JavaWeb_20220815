@@ -33,7 +33,11 @@
 					<tbody>
 						<c:forEach var="book" items="${ requestScope.books }">
 						<tr>
-							<td>${ book.id }</td>
+							<td>
+								<a href="${ pageContext.request.contextPath }/mvc/book/${ book.id }">
+									${ book.id }
+								</a>
+							</td>
 							<td>${ book.name }</td>
 							<td>${ book.amount }</td>
 							<td>${ book.price }</td>
