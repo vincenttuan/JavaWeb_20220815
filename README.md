@@ -8,8 +8,9 @@
 &lt;%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %><br />
 &lt;%@ taglib uri="http://java.sun.com/jsp/jstl/xml" prefix="x" %><br />
 
-# 建立 user 資料表
+# 建立資料表
 <pre>
+-- user 資料表
 create table if not exists user(
 	id int not null auto_increment,
 	username varchar(50) not null unique,
@@ -18,9 +19,8 @@ create table if not exists user(
 	createtime timestamp default current_timestamp,
 	primary key (id)
 );
-</pre>
-<pre>
-# 建立 book 資料表
+
+-- book 資料表
 create table if not exists book (
 	id int not null auto_increment,
 	name varchar(50) not null unique,
