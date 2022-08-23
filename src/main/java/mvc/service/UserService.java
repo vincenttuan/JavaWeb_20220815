@@ -11,7 +11,7 @@ import mvc.entity.User;
 
 public class UserService extends BaseService {
 	
-	private UserDao userDao = new UserDao(); // User 資料庫存取服務
+	private UserDao userDao = new UserDao(); // user 資料表存取服務
 	
 	public int changePassword(String id, String password, String new_password) {
 		// 根據 id 得到 user 物件 
