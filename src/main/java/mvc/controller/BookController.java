@@ -3,6 +3,7 @@ package mvc.controller;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -13,8 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
 
+import mvc.entity.Book;
+import mvc.service.BookService;
+
 @WebServlet("/mvc/book/*")
 public class BookController extends HttpServlet {
+	
+	private BookService bookService = new BookService();
 	
 	private String getPathVariable(HttpServletRequest req) {
 		// 取得 path info 資料
@@ -35,12 +41,18 @@ public class BookController extends HttpServlet {
 		String pathVar = getPathVariable(req);
 		if(pathVar.length() == 0) {
 			resp.getWriter().println("doGet() 全部查詢資料用 <br />");
+			// 查詢多筆
+			List<Book> books = bookService.queryAll();
+			resp.getWriter().println(books);
 		} else {
 			// 利用 allMatch(Character::isDigit) 檢查字串是否是一個數字
 			boolean isNumeric = pathVar.chars().allMatch(Character::isDigit);
 			if(isNumeric) {
 				Integer id = Integer.parseInt(pathVar);
 				resp.getWriter().println("doGet() 單筆查詢資料用, id = " + id  + "<br />");
+				// 查詢單筆
+				Book book = bookService.get(id);
+				resp.getWriter().println(book);
 			} else {
 				resp.getWriter().println("請輸入要查詢的 id (必須是數字) <br />");
 			}
@@ -58,11 +70,15 @@ public class BookController extends HttpServlet {
 		String name = req.getParameter("name");
 		String amount = req.getParameter("amount");
 		String price = req.getParameter("price");
-		resp.getWriter().print("doPost() 新增資料用 <br />");
-		resp.getWriter().print("id: " +  id + "<br />");
-		resp.getWriter().print("name: " +  name + "<br />");
-		resp.getWriter().print("amount: " +  amount + "<br />");
-		resp.getWriter().print("price: " +  price + "<br />");
+		resp.getWriter().println("doPost() 新增資料用 <br />");
+		resp.getWriter().println("id: " +  id + "<br />");
+		resp.getWriter().println("name: " +  name + "<br />");
+		resp.getWriter().println("amount: " +  amount + "<br />");
+		resp.getWriter().println("price: " +  price + "<br />");
+		// 新增
+		String userId = "3"; // 登入者的 user id
+		int rowcount = bookService.add(name, amount, price, userId);
+		resp.getWriter().println("rowcount: " +  rowcount + "<br />");
 	}
 	
 	/*
@@ -96,7 +112,9 @@ public class BookController extends HttpServlet {
 			resp.getWriter().print("name: " +  name + "<br />");
 			resp.getWriter().print("amount: " +  amount + "<br />");
 			resp.getWriter().print("price: " +  price + "<br />");
-			
+			// 修改
+			int rowcount = bookService.update(id, name, amount, price);
+			resp.getWriter().println("rowcount: " +  rowcount + "<br />");
 		} else {
 			resp.getWriter().println("請輸入要修改的 id (必須是數字) <br />");
 		}
@@ -112,6 +130,9 @@ public class BookController extends HttpServlet {
 		if(pathVar.length() > 0 && isNumeric) {
 			Integer id = Integer.parseInt(pathVar);
 			resp.getWriter().println("doDelete() 單筆刪除資料用, id = " + id  + "<br />");
+			// 刪除
+			int rowcount = bookService.delete(id);
+			resp.getWriter().println("rowcount: " +  rowcount + "<br />");
 		} else {
 			resp.getWriter().println("請輸入要刪除的 id (必須是數字) <br />");
 		}
