@@ -11,14 +11,15 @@
 	<body style="padding: 15px">
 		<form class="pure-form" method="post" action="${ pageContext.request.contextPath }/mvc/user/">
 			<fieldset>
+			
 				<legend>User Form (${ buttonName }模式)</legend>
-				序號: <input type="text" value="${ user.id }" id="id" name="id" readonly="readonly" /><p />
-				帳號: <input type="text" value="${ user.username }" id="username" name="username" placeholder="請輸入 username" required="required" /><p />
+				序號: <input type="text" value="${ requestScope.user.id }" id="id" name="id" readonly="readonly" /><p />
+				帳號: <input type="text" value="${ requestScope.user.username }" id="username" name="username" placeholder="請輸入 username" required="required" /><p />
 				${ buttonName=='修改'?'<!--':'' }
 				密碼: <input type="text" value="" id="password" name="password" placeholder="請輸入 password" required="required" /><p />
 				${ buttonName=='修改'?'-->':'' }
-				薪資: <input type="text" value="${ user.salaryDecrypt }" id="salary" name="salary" placeholder="請輸入 salary" required="required" /><p />
-				<button type="submit" class="pure-button pure-button-primary">${ buttonName }</button>
+				薪資: <input type="text" value="${ requestScope.user.salaryDecrypt }" id="salary" name="salary" placeholder="請輸入 salary" required="required" /><p />
+				<button type="submit" class="pure-button pure-button-primary">${ requestScope.buttonName }</button>
 				<button type="button" onclick="location.href='${ pageContext.request.contextPath }/mvc/user/';" class="pure-button">取消</button>
 			</fieldset>
 		</form>
@@ -32,7 +33,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="user" items="${ users }">
+						<c:forEach var="user" items="${ requestScope.users }">
 						<tr>
 							<td>
 								<a href="${ pageContext.request.contextPath }/mvc/user/${ user.id }">
