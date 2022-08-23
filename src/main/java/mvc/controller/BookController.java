@@ -108,6 +108,9 @@ public class BookController extends HttpServlet {
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String pathVar = getPathVariable(req);
+		System.out.println("-----------");
+		System.out.println("pathVar: " + pathVar + " end");
+		System.out.println("-----------");
 		boolean isNumeric = pathVar.chars().allMatch(Character::isDigit);
 		if(pathVar.length() > 0 && isNumeric) {
 			Integer id = Integer.parseInt(pathVar);

@@ -7,9 +7,30 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/pure-min.css">
 		<meta charset="UTF-8">
 		<title>Book form</title>
+		<script>
+			function submitForm() {
+				var id = document.getElementById("id").value;
+				
+				if(id == '') { // 表示是新增模式
+					return true;
+				}
+				
+				// 修改 PUT 需透過 Javscript/Ajax 將資料送到後台
+				var name = document.getElementById("name").value;
+				var amount = document.getElementById("amount").value;
+				var price = document.getElementById("price").value;
+				var updateUrl = '${ pageContext.request.contextPath }/mvc/book/' + id;
+				//var fd = new FormData(document.getElementById('bookForm'));
+				var fd = 'id='+id+'&name='+name+'&amount='+amount+'&price='+price;
+				console.log(fd);
+				console.log(updateUrl);
+				
+				return false;
+			}
+		</script>
 	</head>
 	<body style="padding: 15px">
-		<form class="pure-form" method="post" action="${ pageContext.request.contextPath }/mvc/book/">
+		<form id="bookForm" class="pure-form" onsubmit="return submitForm();" method="post" action="${ pageContext.request.contextPath }/mvc/book/">
 			<fieldset>
 				<legend>Book form</legend>
 				序號: <input type="text" value="${ requestScope.book.id }" id="id" name="id" readonly="readonly" /><p />  
