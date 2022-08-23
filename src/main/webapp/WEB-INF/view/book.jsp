@@ -23,9 +23,28 @@
 				//var fd = new FormData(document.getElementById('bookForm'));
 				var fd = 'id='+id+'&name='+name+'&amount='+amount+'&price='+price;
 				console.log(fd);
-				console.log(updateUrl);
-				
+				// 透過 Ajax
+				var xhttp = new XMLHttpRequest();
+				xhttp.onload = function() {
+				  window.location.href = '${ pageContext.request.contextPath }/mvc/book/';
+				}
+				// Send a request
+				xhttp.open("PUT", updateUrl);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send(fd);
 				return false;
+			}
+			
+			function deleteBook(id) {
+				var deleteUrl = '${ pageContext.request.contextPath }/mvc/book/' + id;
+				var xhttp = new XMLHttpRequest();
+				xhttp.onload = function() {
+				  window.location.href = '${ pageContext.request.contextPath }/mvc/book/';
+				}
+				// Send a request
+				xhttp.open("DELETE", deleteUrl);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send();
 			}
 		</script>
 	</head>
@@ -48,7 +67,7 @@
 				<table class="pure-table pure-table-bordered">
 					<thead>
 						<tr>
-							<th>序號</th><th>書名</th><th>數量</th><th>價格</th><th>填表人ID</th>
+							<th>序號</th><th>書名</th><th>數量</th><th>價格</th><th>填表人ID</th><th>刪除</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -63,6 +82,11 @@
 							<td>${ book.amount }</td>
 							<td>${ book.price }</td>
 							<td>${ book.userId }</td>
+							<td>
+								<a href="javascript:deleteBook(${ book.id })">
+									刪除
+								</a>
+							</td>
 						</tr>
 						</c:forEach>
 					</tbody>
