@@ -1,6 +1,7 @@
 package mvc.controller;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -95,6 +96,10 @@ public class BookController extends HttpServlet {
 			// doPut() 無法透過 req.getParameter() 取得表單資料
 			String formData = IOUtils.toString(req.getInputStream(), StandardCharsets.UTF_8);
 			resp.getWriter().println("formData: " + formData  + "<br />");
+			// URL Decoder 將 URL 編碼資料轉為原始資料
+			formData = URLDecoder.decode(formData, "UTF-8");
+			resp.getWriter().println("formData: " + formData  + "<br />");
+			
 			// formData: id=3&name=Java8&amount=200&price=750
 			// 透過 & 切成陣列: ["id=3", "name=Java8", "amount=200", "price=750"]
 			// 轉成 map 格式 {"id":"3", "name":"Java8", "amount":"200", "price":"750"}
