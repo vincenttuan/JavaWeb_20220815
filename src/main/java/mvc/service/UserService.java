@@ -1,10 +1,7 @@
 package mvc.service;
 
 import java.math.BigInteger;
-import java.security.MessageDigest;
 import java.util.List;
-
-import org.apache.el.stream.Stream;
 
 import mvc.dao.UserDao;
 import mvc.entity.User;
