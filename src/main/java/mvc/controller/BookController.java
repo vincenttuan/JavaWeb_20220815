@@ -59,10 +59,21 @@ public class BookController extends HttpServlet {
 		resp.getWriter().print("amount: " +  amount + "<br />");
 		resp.getWriter().print("price: " +  price + "<br />");
 	}
-
+	
+	/*
+	 * 修改: /mvc/book/1 或 /mvc/book/
+	 * 資料由表單帶入
+	 * */
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.getWriter().print("do put 修改資料用");
+		String pathVar = getPathVariable(req);
+		boolean isNumeric = pathVar.chars().allMatch(Character::isDigit);
+		if(pathVar.length() > 0 && isNumeric) {
+			Integer id = Integer.parseInt(pathVar);
+			resp.getWriter().println("doPut() 修改資料用, id = " + id  + "<br />");
+		} else {
+			resp.getWriter().println("請輸入要修改的 id (必須是數字) <br />");
+		}
 	}
 	
 	/*
@@ -71,17 +82,12 @@ public class BookController extends HttpServlet {
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String pathVar = getPathVariable(req);
-		if(pathVar.length() == 0) {
-			resp.getWriter().println("無資料可刪除 <br />");
+		boolean isNumeric = pathVar.chars().allMatch(Character::isDigit);
+		if(pathVar.length() > 0 && isNumeric) {
+			Integer id = Integer.parseInt(pathVar);
+			resp.getWriter().println("doDelete() 單筆刪除資料用, id = " + id  + "<br />");
 		} else {
-			// 利用 allMatch(Character::isDigit) 檢查字串是否是一個數字
-			boolean isNumeric = pathVar.chars().allMatch(Character::isDigit);
-			if(isNumeric) {
-				Integer id = Integer.parseInt(pathVar);
-				resp.getWriter().println("doDelete() 單筆刪除資料用, id = " + id  + "<br />");
-			} else {
-				resp.getWriter().println("請輸入要刪除的 id (必須是數字) <br />");
-			}
+			resp.getWriter().println("請輸入要刪除的 id (必須是數字) <br />");
 		}
 	}
 	
