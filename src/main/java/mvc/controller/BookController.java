@@ -2,6 +2,8 @@ package mvc.controller;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -77,6 +79,24 @@ public class BookController extends HttpServlet {
 			// doPut() 無法透過 req.getParameter() 取得表單資料
 			String formData = IOUtils.toString(req.getInputStream(), StandardCharsets.UTF_8);
 			resp.getWriter().println("formData: " + formData  + "<br />");
+			// formData: id=3&name=Java8&amount=200&price=750
+			// 透過 & 切成陣列: ["id=3", "name=Java8", "amount=200", "price=750"]
+			// 轉成 map 格式 {"id":"3", "name":"Java8", "amount":"200", "price":"750"}
+			Map<String, String> map = new LinkedHashMap<>();			
+			String[] array = formData.split("&");
+			for(String row: array) {
+				String[] entry = row.split("=");
+				String key = entry[0];
+				String value = entry[1];
+				map.put(key, value);
+			}
+			String name = map.get("name");
+			String amount = map.get("amount");
+			String price = map.get("price");
+			resp.getWriter().print("name: " +  name + "<br />");
+			resp.getWriter().print("amount: " +  amount + "<br />");
+			resp.getWriter().print("price: " +  price + "<br />");
+			
 		} else {
 			resp.getWriter().println("請輸入要修改的 id (必須是數字) <br />");
 		}
