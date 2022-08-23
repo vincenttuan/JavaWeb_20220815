@@ -1,12 +1,15 @@
 package mvc.controller;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.io.IOUtils;
 
 @WebServlet("/mvc/book/*")
 public class BookController extends HttpServlet {
@@ -71,6 +74,9 @@ public class BookController extends HttpServlet {
 		if(pathVar.length() > 0 && isNumeric) {
 			Integer id = Integer.parseInt(pathVar);
 			resp.getWriter().println("doPut() 修改資料用, id = " + id  + "<br />");
+			// doPut() 無法透過 req.getParameter() 取得表單資料
+			String formData = IOUtils.toString(req.getInputStream(), StandardCharsets.UTF_8);
+			resp.getWriter().println("formData: " + formData  + "<br />");
 		} else {
 			resp.getWriter().println("請輸入要修改的 id (必須是數字) <br />");
 		}
