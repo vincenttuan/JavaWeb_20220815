@@ -15,7 +15,7 @@ import mvc.entity.User;
 import mvc.service.UserService;
 
 // 登入驗證與管理
-@WebFilter(urlPatterns = {"/mvc/user/*"})
+@WebFilter(urlPatterns = {"/mvc/user/*", "/mvc/book/*"})
 public class LoginFilter extends HttpFilter {
 
 	@Override
