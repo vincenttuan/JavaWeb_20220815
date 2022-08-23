@@ -62,8 +62,8 @@ public class BookController extends HttpServlet {
 				req.setAttribute("buttonName", "修改");
 			} else {
 				//resp.getWriter().println("請輸入要查詢的 id (必須是數字) <br />");
-				resp.sendError(500, "請輸入要查詢的 id (必須是數字) <br />");
-				return;
+				//resp.sendError(500, "請輸入要查詢的 id (必須是數字)"); // 透過 Tomcat 所提供的制式錯誤頁面來顯示錯誤
+				throw new ServletException("請輸入要查詢的 id (必須是數字)"); // 透過統一錯誤頁面 error.jsp 來顯示錯誤 
 			}
 		}
 		// 重導到指定頁面
