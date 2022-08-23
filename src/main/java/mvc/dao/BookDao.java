@@ -1,5 +1,5 @@
 package mvc.dao;
 
-public class BookDao {
-
+public class BookDao extends BaseDao {
+	
 }
