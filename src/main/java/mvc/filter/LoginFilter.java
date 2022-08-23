@@ -34,11 +34,15 @@ public class LoginFilter extends HttpFilter {
 			// 檢查是否有從表單傳來 username 與 password
 			String username = req.getParameter("username");
 			String password = req.getParameter("password");
+			System.out.println(username);
+			System.out.println(password);
+			System.out.println(req.getRequestURI());
 			User user = userService.checkLogin(username, password);
 			if(user != null) { // 是否登入成功
 				session.setAttribute("user", user); // 將 user(登入者) 物件存放在 session 變數(每一頁(servlet, jsp)都可以使用)中
 				String contextName = req.getServletContext().getServletContextName();
-				res.sendRedirect("/" + contextName + "/mvc/user/");  // 重導到首頁的方式放行
+				//res.sendRedirect("/" + contextName + "/mvc/user/");  // 重導到首頁的方式放行
+				res.sendRedirect(req.getRequestURI());
 			} else {
 				// 重導到 login 畫面
 				RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/login.jsp");
