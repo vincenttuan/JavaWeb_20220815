@@ -83,11 +83,11 @@ public class BookController extends HttpServlet {
 		String name = req.getParameter("name");
 		String amount = req.getParameter("amount");
 		String price = req.getParameter("price");
-		resp.getWriter().println("doPost() 新增資料用 <br />");
-		resp.getWriter().println("id: " +  id + "<br />");
-		resp.getWriter().println("name: " +  name + "<br />");
-		resp.getWriter().println("amount: " +  amount + "<br />");
-		resp.getWriter().println("price: " +  price + "<br />");
+		//resp.getWriter().println("doPost() 新增資料用 <br />");
+		//resp.getWriter().println("id: " +  id + "<br />");
+		//resp.getWriter().println("name: " +  name + "<br />");
+		//resp.getWriter().println("amount: " +  amount + "<br />");
+		//resp.getWriter().println("price: " +  price + "<br />");
 		// 新增
 		// 得到登入者的 user id
 		// 要透過 session.getAttribute("user") 中得到 id
@@ -96,7 +96,9 @@ public class BookController extends HttpServlet {
 		Integer userId = user.getId(); 
 		
 		int rowcount = bookService.add(name, amount, price, userId);
-		resp.getWriter().println("rowcount: " +  rowcount + "<br />");
+		//resp.getWriter().println("rowcount: " +  rowcount + "<br />");
+		String contextName = req.getServletContext().getServletContextName(); // JavaWeb_20220815
+		resp.sendRedirect("/" + contextName + "/mvc/book/");  // 重導到首頁
 	}
 	
 	/*
@@ -131,14 +133,17 @@ public class BookController extends HttpServlet {
 			String name = map.get("name");
 			String amount = map.get("amount");
 			String price = map.get("price");
-			resp.getWriter().print("name: " +  name + "<br />");
-			resp.getWriter().print("amount: " +  amount + "<br />");
-			resp.getWriter().print("price: " +  price + "<br />");
+			//resp.getWriter().print("name: " +  name + "<br />");
+			//resp.getWriter().print("amount: " +  amount + "<br />");
+			//resp.getWriter().print("price: " +  price + "<br />");
 			// 修改
 			int rowcount = bookService.update(id, name, amount, price);
-			resp.getWriter().println("rowcount: " +  rowcount + "<br />");
+			//resp.getWriter().println("rowcount: " +  rowcount + "<br />");
+			String contextName = req.getServletContext().getServletContextName(); // JavaWeb_20220815
+			resp.sendRedirect("/" + contextName + "/mvc/book/");  // 重導到首頁
 		} else {
-			resp.getWriter().println("請輸入要修改的 id (必須是數字) <br />");
+			//resp.getWriter().println("請輸入要修改的 id (必須是數字) <br />");
+			throw new ServletException("請輸入要修改的 id (必須是數字)");
 		}
 	}
 	
@@ -154,9 +159,12 @@ public class BookController extends HttpServlet {
 			resp.getWriter().println("doDelete() 單筆刪除資料用, id = " + id  + "<br />");
 			// 刪除
 			int rowcount = bookService.delete(id);
-			resp.getWriter().println("rowcount: " +  rowcount + "<br />");
+			//resp.getWriter().println("rowcount: " +  rowcount + "<br />");
+			String contextName = req.getServletContext().getServletContextName(); // JavaWeb_20220815
+			resp.sendRedirect("/" + contextName + "/mvc/book/");  // 重導到首頁
 		} else {
-			resp.getWriter().println("請輸入要刪除的 id (必須是數字) <br />");
+			//resp.getWriter().println("請輸入要刪除的 id (必須是數字) <br />");
+			throw new ServletException("請輸入要刪除的 id (必須是數字)");
 		}
 	}
 	

@@ -14,7 +14,7 @@
 				錯誤物件: <%=exception.getClass().getSimpleName() %><p />
 				錯誤訊息: <%=exception.getMessage() %><p />
 				<button type="button" 
-						onclick="location.href='${ pageContext.request.contextPath }/mvc/user/';" 
+						onclick="location.href='${ pageContext.request.contextPath }/';" 
 						class="pure-button">回首頁</button>
 			</fieldset>
 		</form>
