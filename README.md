@@ -18,7 +18,8 @@ create table if not exists user(
 	createtime timestamp default current_timestamp,
 	primary key (id)
 );
-
+</pre>
+<pre>
 # 建立 book 資料表
 create table if not exists book (
 	id int not null auto_increment,
@@ -29,5 +30,5 @@ create table if not exists book (
 	primary key(id),
 	foreign key(user_id) references user(id)
 );
-
 </pre>
+
