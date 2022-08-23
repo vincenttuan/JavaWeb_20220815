@@ -18,4 +18,16 @@ create table if not exists user(
 	createtime timestamp default current_timestamp,
 	primary key (id)
 );
+
+# 建立 book 資料表
+create table if not exists book (
+	id int not null auto_increment,
+	name varchar(50) not null unique,
+	amount int not null,
+	price int not null,
+	user_id int,
+	primary key(id),
+	foreign key(user_id) references user(id)
+);
+
 </pre>
