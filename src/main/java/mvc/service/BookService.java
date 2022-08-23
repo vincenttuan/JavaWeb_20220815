@@ -19,13 +19,12 @@ public class BookService {
 		return bookDao.add(book);
 	}
 	
-	public int add(String name, String amount, String price, String user_id) {
+	public int add(String name, String amount, String price, Integer user_id) {
 		if (!amount.chars().allMatch(Character::isDigit) || 
-			!price.chars().allMatch(Character::isDigit) ||
-			!user_id.chars().allMatch(Character::isDigit)) {
+			!price.chars().allMatch(Character::isDigit)) {
 			return 0;
 		}
-		return add(name, Integer.parseInt(amount), Integer.parseInt(price), Integer.parseInt(user_id));
+		return add(name, Integer.parseInt(amount), Integer.parseInt(price), user_id);
 	}
 	
 	// 修改

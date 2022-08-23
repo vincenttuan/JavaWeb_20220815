@@ -12,10 +12,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
 
 import mvc.entity.Book;
+import mvc.entity.User;
 import mvc.service.BookService;
 
 @WebServlet("/mvc/book/*")
@@ -77,7 +79,12 @@ public class BookController extends HttpServlet {
 		resp.getWriter().println("amount: " +  amount + "<br />");
 		resp.getWriter().println("price: " +  price + "<br />");
 		// 新增
-		String userId = "3"; // 登入者的 user id
+		// 得到登入者的 user id
+		// 要透過 session.getAttribute("user") 中得到 id
+		HttpSession session = req.getSession();
+		User user = (User)session.getAttribute("user");
+		Integer userId = user.getId(); 
+		
 		int rowcount = bookService.add(name, amount, price, userId);
 		resp.getWriter().println("rowcount: " +  rowcount + "<br />");
 	}
