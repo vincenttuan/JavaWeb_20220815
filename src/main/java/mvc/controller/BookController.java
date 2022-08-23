@@ -7,6 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,23 +44,32 @@ public class BookController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String pathVar = getPathVariable(req);
 		if(pathVar.length() == 0) {
-			resp.getWriter().println("doGet() 全部查詢資料用 <br />");
+			//resp.getWriter().println("doGet() 全部查詢資料用 <br />");
 			// 查詢多筆
 			List<Book> books = bookService.queryAll();
 			resp.getWriter().println(books);
+			req.setAttribute("buttonName", "新增");
 		} else {
 			// 利用 allMatch(Character::isDigit) 檢查字串是否是一個數字
 			boolean isNumeric = pathVar.chars().allMatch(Character::isDigit);
 			if(isNumeric) {
 				Integer id = Integer.parseInt(pathVar);
-				resp.getWriter().println("doGet() 單筆查詢資料用, id = " + id  + "<br />");
+				//resp.getWriter().println("doGet() 單筆查詢資料用, id = " + id  + "<br />");
 				// 查詢單筆
 				Book book = bookService.get(id);
-				resp.getWriter().println(book);
+				//resp.getWriter().println(book);
+				req.setAttribute("book", book);
+				req.setAttribute("buttonName", "修改");
 			} else {
-				resp.getWriter().println("請輸入要查詢的 id (必須是數字) <br />");
+				//resp.getWriter().println("請輸入要查詢的 id (必須是數字) <br />");
+				resp.sendError(500, "請輸入要查詢的 id (必須是數字) <br />");
+				return;
 			}
 		}
+		// 重導到指定頁面
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/book.jsp");
+		req.setAttribute("books", bookService.queryAll());
+		rd.forward(req, resp);
 	}
 	
 	/*
