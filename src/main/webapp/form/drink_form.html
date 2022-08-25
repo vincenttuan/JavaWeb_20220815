@@ -65,7 +65,34 @@
 			
 			// 查詢單筆
 			function get(id) {
-				
+				// 將 id 資料 get 到指定網址
+				// 得到回應
+				xhttp.onreadystatechange = function() {
+					if(xhttp.readyState == xhttp.DONE && xhttp.status == 200) {
+						// 得到 json 字串
+						var jsonString = xhttp.responseText;
+						console.log(jsonString);
+						if(jsonString == null) {
+							alert('無此資料');
+							return;
+						}
+						// 將 json 字串轉 json 物件
+						var drink = JSON.parse(jsonString);
+						// 將資料注入到 form 表單中
+						document.getElementById('id').value = drink.id;
+						document.getElementById('name').value = drink.name;
+						document.getElementById('amount').value = drink.amount;
+						document.getElementById('price').value = drink.price;
+						// 變更按鈕狀態
+						append_button.disabled = true;
+						update_button.disabled = false;
+					}
+				};
+				var url = '/JavaWeb_20220815/jpa/json/drink/' + id;
+				// Send a request
+				xhttp.open("GET", url);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send();
 			}
 			
 			// 新增
