@@ -23,11 +23,17 @@
 						// 將 json 字串轉 json 物件
 						var drinks = JSON.parse(jsonString);
 						console.log(drinks);
-						// 進行分析
+						// 進行分析/動態產出 html
 						var html = '';
 						drinks.forEach(function(drink) {
 							console.log(drink);
-							html += '<tr><td>' + drink.id + '</td></tr>';
+							html += '<tr>' +
+									'<td>' + drink.id + '</td>' +
+									'<td>' + drink.name + '</td>' +
+									'<td>' + drink.amount + '</td>' +
+									'<td>' + drink.price + '</td>' +
+									'<td><a href="javascript:remove(' + drink.id + ')">刪除</a></td>' +
+									'</tr>';
 						});
 						// 塞入到 <tbody id="rows"> 中
 						rows.innerHTML = html;
@@ -56,7 +62,7 @@
 			}
 			
 			// 刪除
-			function remove() {
+			function remove(id) {
 				
 			}
 		
