@@ -45,7 +45,7 @@
 						drinks.forEach(function(drink) {
 							console.log(drink);
 							html += '<tr>' +
-									'<td>' + drink.id + '</td>' +
+									'<td><a href="javascript:get(' + drink.id + ')">' + drink.id + '</a></td>' +
 									'<td>' + drink.name + '</td>' +
 									'<td>' + drink.amount + '</td>' +
 									'<td>' + drink.price + '</td>' +
