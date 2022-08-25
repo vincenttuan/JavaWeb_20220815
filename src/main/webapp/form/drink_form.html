@@ -79,6 +79,21 @@
 				// 再將該 json 物件透過 JSON.stringify(jsonObj) 轉成 json 字串送出
 				var jsonString = JSON.stringify(jsonObj);
 				console.log(jsonString);
+				
+				// 將 json 資料 post 到指定網址
+				// 得到回應
+				xhttp.onreadystatechange = function() {
+					if(xhttp.readyState == xhttp.DONE && xhttp.status == 200) {
+						// 得到 json 字串
+						var jsonString = xhttp.responseText;
+						console.log(jsonString);
+					}
+				};
+				var url = '/JavaWeb_20220815/jpa/json/drink/';
+				// Send a request
+				xhttp.open("POST", url);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send(jsonString);
 			}
 			
 			// 修改
