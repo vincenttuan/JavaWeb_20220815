@@ -27,8 +27,10 @@
 						var html = '';
 						drinks.forEach(function(drink) {
 							console.log(drink);
+							html += '<tr><td>' + drink.id + '</td></tr>';
 						});
-						
+						// 塞入到 <tbody id="rows"> 中
+						rows.innerHTML = html;
 					}
 				}
 				var url = '/JavaWeb_20220815/jpa/json/drink/';
@@ -87,9 +89,8 @@
 										<th>序號</th><th>品名</th><th>數量</th><th>價格</th><th>刪除</th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody id="rows">
 									<!-- 動態加入所有 drink 資料 -->
-									<div id="rows"></div>
 								</tbody>
 							</table>
 						</fieldset>
