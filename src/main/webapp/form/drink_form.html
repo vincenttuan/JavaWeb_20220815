@@ -1,10 +1,57 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
+	<head>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/pure-min.css">
+		<meta charset="UTF-8">
+		<title>Drink Ajax(Json) From</title>
+	</head>
+	<body style="padding: 15px">
+		
+		<table width="100%">
+			<tr>
+				<td valign="top">
+					<form class="pure-form">
+						<fieldset>
+							<legend>Drink Ajax(Json) From</legend>
+							序號: <input type="text" id="id" name="id" readonly="readonly" /><p />
+							品名: <input type="text" id="name" name="name" placeholder="請輸入品名" required="required" /><p />
+							數量: <input type="number" id="amount" name="amount" placeholder="請輸入數量" required="required" /><p />
+							價格: <input type="number" id="price" name="price" placeholder="請輸入價格" required="required" /><p />
+							<button id="append_button" type="button" class="pure-button pure-button-primary">新增</button>
+							<button id="update_button" type="button" class="pure-button pure-button-primary">修改</button>
+						</fieldset>
+					</form>
+				</td>
+				<td valign="top">
+					<form class="pure-form">
+						<fieldset>
+							<legend>Drink Ajax(Json) List</legend>
+							<table class="pure-table pure-table-bordered">
+								<thead>
+									<tr>
+										<th>序號</th><th>品名</th><th>數量</th><th>價格</th><th>刪除</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!-- 動態加入所有 drink 資料 -->
+									<div id="rows"></div>
+								</tbody>
+							</table>
+						</fieldset>
+					</form>
+				</td>
+				<td valign="top">
+					<form class="pure-form">
+						<fieldset>
+							<legend>Drink Ajax(Json) Chart</legend>
+							
+						</fieldset>
+					</form>
+				</td>
+			</tr>
+		</table>
+		
+		
+		
+	</body>
 </html>
