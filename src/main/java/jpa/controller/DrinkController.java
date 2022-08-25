@@ -1,6 +1,7 @@
 package jpa.controller;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -114,6 +115,8 @@ public class DrinkController extends HttpServlet {
 	private Map<String, String> getFormMap(HttpServletRequest req) throws IOException {
 		// 透過資料串流來取得表單資料
 		String formData = IOUtils.toString(req.getInputStream(), StandardCharsets.UTF_8);
+		// URL Decoder 將 URL 編碼資料轉為原始資料
+		formData = URLDecoder.decode(formData, "UTF-8");
 		// 將表單資料放入到 map 集合
 		Map<String, String> map = new LinkedHashMap<>();			
 		String[] array = formData.split("&");
