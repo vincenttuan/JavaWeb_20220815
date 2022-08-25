@@ -4,6 +4,50 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/pure-min.css">
 		<meta charset="UTF-8">
 		<title>Drink Ajax(Json) From</title>
+		<script>
+			var xhttp = new XMLHttpRequest();
+			
+			window.onload = function() {
+				append_button.disabled = false;
+				update_button.disabled = true;
+				query();
+			};
+		
+			// 查詢全部
+			function query() {
+				xhttp.onreadystatechange = function() {
+					if(xhttp.readyState == xhttp.DONE && xhttp.status == 200) {
+						console.log(xhttp.responseText);
+					}
+				}
+				var url = '/JavaWeb_20220815/jpa/json/drink/';
+				// Send a request
+				xhttp.open("GET", url);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send();
+			}
+			
+			// 查詢單筆
+			function get(id) {
+				
+			}
+			
+			// 新增
+			function append() {
+				
+			}
+			
+			// 修改
+			function update() {
+				
+			}
+			
+			// 刪除
+			function remove() {
+				
+			}
+		
+		</script>
 	</head>
 	<body style="padding: 15px">
 		
