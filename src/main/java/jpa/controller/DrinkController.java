@@ -62,10 +62,16 @@ public class DrinkController extends HttpServlet {
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id = getPathVariable(req);
 		Map<String, String> formMap = getFormMap(req);
-		// 修改程序
-		boolean isSuccess = drinkService.modify(id, formMap.get("name"), formMap.get("amount"), formMap.get("price"));
-		// 將 status 物件轉 json 字串
-		Status status = new Status("update", isSuccess);
+		Status status = null;
+		try {
+			// 修改程序
+			boolean isSuccess = drinkService.modify(id, formMap.get("name"), formMap.get("amount"), formMap.get("price"));
+			// 將 status 物件轉 json 字串
+			status = new Status("update", isSuccess);
+		} catch (Exception e) {
+			status = new Status("update", false);
+			status.message = e.getMessage();
+		}
 		String jsonStr = gson.toJson(status);
 		// 將 json 字串回應給前端
 		resp.getWriter().print(jsonStr);
