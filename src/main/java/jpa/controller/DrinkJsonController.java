@@ -60,11 +60,12 @@ public class DrinkJsonController extends HttpServlet {
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id = getPathVariable(req);
-		Map<String, String> formMap = getFormMap(req);
+		// 取得 drink 物件
+		Drink drink = getDrinkFromJson(req);
 		Status status = null;
 		try {
 			// 修改程序
-			boolean isSuccess = drinkService.modify(id, formMap.get("name"), formMap.get("amount"), formMap.get("price"));
+			boolean isSuccess = drinkService.modify(id, drink);
 			// 將 status 物件轉 json 字串
 			status = new Status("update", isSuccess);
 		} catch (Exception e) {

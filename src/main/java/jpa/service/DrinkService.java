@@ -57,7 +57,12 @@ public class DrinkService {
 	}
 	
 	// 修改 II
-	public boolean modify(Drink drink) {
+	public boolean modify(String id, Drink drink) {
+		// 資料驗證
+		if(id == null || !id.chars().allMatch(Character::isDigit)) {
+			return false;
+		}
+		drink.setId(Integer.parseInt(id));
 		// 進行修改 (isSuccess 是否成功 ?)
 		boolean isSuccess = drinkDao.update(drink);
 		return isSuccess;
