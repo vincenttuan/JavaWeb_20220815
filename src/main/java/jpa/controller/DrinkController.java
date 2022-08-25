@@ -1,13 +1,18 @@
 package jpa.controller;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.io.IOUtils;
 
 import com.google.gson.Gson;
 
@@ -52,6 +57,33 @@ public class DrinkController extends HttpServlet {
 		resp.getWriter().print(jsonStr);
 	}
 	
+	// 路徑範例: /jpa/drink/1
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String id = getPathVariable(req);
+		Map<String, String> formMap = getFormMap(req);
+		// 修改程序
+		boolean isSuccess = drinkService.modify(id, formMap.get("name"), formMap.get("amount"), formMap.get("price"));
+		// 將 status 物件轉 json 字串
+		Status status = new Status("update", isSuccess);
+		String jsonStr = gson.toJson(status);
+		// 將 json 字串回應給前端
+		resp.getWriter().print(jsonStr);
+	}
+
+	// 路徑範例: /jpa/drink/1
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String id = getPathVariable(req);
+		// 刪除程序
+		boolean isSuccess = drinkService.remove(id);
+		// 將 status 物件轉 json 字串
+		Status status = new Status("delete", isSuccess);
+		String jsonStr = gson.toJson(status);
+		// 將 json 字串回應給前端
+		resp.getWriter().print(jsonStr);
+	}
+
 	// 狀態的物件回應
 	class Status {
 		String name;
@@ -61,6 +93,31 @@ public class DrinkController extends HttpServlet {
 			this.name = name;
 			this.isSuccess = isSuccess;
 		}
+	}
+	
+	private String getPathVariable(HttpServletRequest req) {
+		// 取得 path info 資料
+		String pathInfo = req.getPathInfo();
+		// 去除 path info 的前導 "/" 變為 path variable
+		String pathVariable = pathInfo.replace("/", "");
+		// 去除 * 號
+		pathVariable = pathVariable.replace("*", "");
+		return pathVariable;
+	}
+	
+	private Map<String, String> getFormMap(HttpServletRequest req) throws IOException {
+		// 透過資料串流來取得表單資料
+		String formData = IOUtils.toString(req.getInputStream(), StandardCharsets.UTF_8);
+		// 將表單資料放入到 map 集合
+		Map<String, String> map = new LinkedHashMap<>();			
+		String[] array = formData.split("&");
+		for(String row: array) {
+			String[] entry = row.split("=");
+			String key = entry[0];
+			String value = entry[1];
+			map.put(key, value);
+		}
+		return map;
 	}
 	
 }
