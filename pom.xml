@@ -52,12 +52,14 @@
 		    <version>2.11.0</version>
 		</dependency>
 		
+		<!-- json 工具 -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.9.0</version>
 		</dependency>
 		
+		<!-- JPA -->
 		<dependency>
 		    <groupId>org.eclipse.persistence</groupId>
 		    <artifactId>eclipselink</artifactId>
