@@ -9,7 +9,7 @@ public class DrinkService {
 	
 	private DrinkDao drinkDao = new DrinkDao();
 	
-	// 新增
+	// 新增 I
 	public boolean append(String name, String amount, String price) {
 		// 資料驗證
 		if(name == null || name.length() == 0 || 
@@ -28,7 +28,14 @@ public class DrinkService {
 		return isSuccess;
 	}
 	
-	// 修改
+	// 新增 II
+	public boolean append(Drink drink) {
+		// 進行儲存 (isSuccess 是否成功 ?)
+		boolean isSuccess = drinkDao.add(drink);
+		return isSuccess;
+	}
+	
+	// 修改 I
 	public boolean modify(String id, String name, String amount, String price) {
 		// 資料驗證
 		if(id == null || name == null || name.length() == 0 || 
@@ -44,6 +51,13 @@ public class DrinkService {
 		drink.setName(name);
 		drink.setAmount(Integer.parseInt(amount));
 		drink.setPrice(Integer.parseInt(price));
+		// 進行修改 (isSuccess 是否成功 ?)
+		boolean isSuccess = drinkDao.update(drink);
+		return isSuccess;
+	}
+	
+	// 修改 II
+	public boolean modify(Drink drink) {
 		// 進行修改 (isSuccess 是否成功 ?)
 		boolean isSuccess = drinkDao.update(drink);
 		return isSuccess;
