@@ -23,11 +23,12 @@ public class DrinkDao {
 	}
 	
 	// 新增
-	public synchronized void add(Drink drink) {
+	public synchronized boolean add(Drink drink) {
 		EntityTransaction etx = em.getTransaction(); // 取得交易環境進行新增,修改,刪除工作
 		etx.begin(); // 交易開始
 		em.persist(drink); // 將 drink 物件進行永續(將 drink 存放到資料表的紀錄中)
 		etx.commit(); // 提交(交易結束)
+		return true;
 	}
 	
 	// 全部查詢
