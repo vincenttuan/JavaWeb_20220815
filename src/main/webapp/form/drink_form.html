@@ -150,6 +150,8 @@
 						// 變更按鈕狀態
 						append_button.disabled = false;
 						update_button.disabled = true;
+						// 表單重置
+						drinkForm.reset();
 						// 重新查詢
 						query();
 					}
@@ -199,7 +201,7 @@
 	    	});
 	    	
 	        var options = {
-	          title: 'My Daily Activities'
+	          title: 'My Drinks'
 	        };
 	
 	        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -215,7 +217,7 @@
 		<table width="100%">
 			<tr>
 				<td valign="top">
-					<form class="pure-form">
+					<form id="drinkForm" class="pure-form">
 						<fieldset>
 							<legend>Drink Ajax(Json) From</legend>
 							序號: <input type="text" id="id" name="id" readonly="readonly" /><p />
