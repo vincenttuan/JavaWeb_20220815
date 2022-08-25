@@ -54,6 +54,8 @@
 						});
 						// 塞入到 <tbody id="rows"> 中
 						rows.innerHTML = html;
+						// 繪圖
+						drawChart(drinks);
 					}
 				}
 				var url = '/JavaWeb_20220815/jpa/json/drink/';
@@ -184,19 +186,18 @@
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	    <script type="text/javascript">
 	      google.charts.load('current', {'packages':['corechart']});
-	      google.charts.setOnLoadCallback(drawChart);
+	      //google.charts.setOnLoadCallback(drawChart);
 	
-	      function drawChart() {
+	      function drawChart(drinks) {
 	
-	        var data = google.visualization.arrayToDataTable([
-	          ['Task', 'Hours per Day'],
-	          ['Work',     11],
-	          ['Eat',      2],
-	          ['Commute',  2],
-	          ['Watch TV', 2],
-	          ['Sleep',    7]
-	        ]);
-	
+		 	var data = new google.visualization.DataTable();
+	    	data.addColumn('string', 'name');
+	    	data.addColumn('number', 'asset');
+	    	
+	    	drinks.forEach(function(drink) {
+	    		data.addRow([drink.name, (drink.amount * drink.price)]);	
+	    	});
+	    	
 	        var options = {
 	          title: 'My Daily Activities'
 	        };
