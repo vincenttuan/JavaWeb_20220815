@@ -28,11 +28,20 @@ public class DrinkJsonController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<Drink> drinks = drinkService.findAll();
-		// 將 drinks 集合物件轉 json 字串
-		String jsonStr = gson.toJson(drinks);
-		// 將 json 字串回應給前端
-		resp.getWriter().print(jsonStr);
+		String id = getPathVariable(req);
+		if(id == null || id.length() == 0) {
+			List<Drink> drinks = drinkService.findAll();
+			// 將 drinks 集合物件轉 json 字串
+			String jsonStr = gson.toJson(drinks);
+			// 將 json 字串回應給前端
+			resp.getWriter().print(jsonStr);
+		} else {
+			Drink drink = drinkService.find(id);
+			// 將 drink 物件轉 json 字串
+			String jsonStr = gson.toJson(drink);
+			// 將 json 字串回應給前端
+			resp.getWriter().print(jsonStr);
+		}
 	}
 
 	@Override
