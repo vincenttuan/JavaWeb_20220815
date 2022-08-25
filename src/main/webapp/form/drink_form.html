@@ -17,7 +17,18 @@
 			function query() {
 				xhttp.onreadystatechange = function() {
 					if(xhttp.readyState == xhttp.DONE && xhttp.status == 200) {
-						console.log(xhttp.responseText);
+						// 得到 json 字串
+						var jsonString = xhttp.responseText;
+						console.log(jsonString);
+						// 將 json 字串轉 json 物件
+						var drinks = JSON.parse(jsonString);
+						console.log(drinks);
+						// 進行分析
+						var html = '';
+						drinks.forEach(function(drink) {
+							console.log(drink);
+						});
+						
 					}
 				}
 				var url = '/JavaWeb_20220815/jpa/json/drink/';
