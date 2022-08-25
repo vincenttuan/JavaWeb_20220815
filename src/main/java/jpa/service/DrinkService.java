@@ -1,5 +1,7 @@
 package jpa.service;
 
+import java.util.List;
+
 import jpa.entity.Drink;
 import jpa.repository.DrinkDao;
 
@@ -7,6 +9,7 @@ public class DrinkService {
 	
 	private DrinkDao drinkDao = new DrinkDao();
 	
+	// 新增
 	public boolean append(String name, String amount, String price) {
 		// 資料驗證
 		if(name == null || name.length() == 0 || 
@@ -23,6 +26,11 @@ public class DrinkService {
 		// 進行儲存 (isSuccess 是否成功 ?)
 		boolean isSuccess = drinkDao.add(drink);
 		return isSuccess;
+	}
+	
+	// 查詢全部
+	public List<Drink> findAll() {
+		return drinkDao.query();
 	}
 	
 }
