@@ -37,6 +37,7 @@
 			
 			function deleteBook(id) {
 				var deleteUrl = '${ pageContext.request.contextPath }/mvc/book/' + id;
+				// 透過 Ajax
 				var xhttp = new XMLHttpRequest();
 				xhttp.onload = function() {
 				  window.location.href = '${ pageContext.request.contextPath }/mvc/book/';
