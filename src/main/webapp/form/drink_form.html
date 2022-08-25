@@ -10,8 +10,25 @@
 			window.onload = function() {
 				append_button.disabled = false;
 				update_button.disabled = true;
+				
+				// append 按鈕按下
+				append_button.addEventListener('click', function(){
+					console.log('append_button click');
+					append();
+				});
+				
+				// update 按鈕按下
+				update_button.addEventListener('click', function(){
+					console.log('update_button click');
+					update();
+				});
+				
+				// 查詢全部資料
 				query();
 			};
+			
+			
+			
 		
 			// 查詢全部
 			function query() {
