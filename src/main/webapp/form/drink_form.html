@@ -37,7 +37,7 @@
 						// 得到 json 字串
 						var jsonString = xhttp.responseText;
 						console.log(jsonString);
-						// 將 json 字串轉 json 物件
+						// 將 json 字串透過 JSON.parse(jsonString) 轉 json 物件
 						var drinks = JSON.parse(jsonString);
 						console.log(drinks);
 						// 進行分析/動態產出 html
@@ -70,7 +70,15 @@
 			
 			// 新增
 			function append() {
-				
+				// 將表單資料組成一個 json 物件
+				var jsonObj = new Object();
+				jsonObj.name = document.getElementById('name').value;
+				jsonObj.amount = document.getElementById('amount').value;
+				jsonObj.price = document.getElementById('price').value;
+				console.log(jsonObj);
+				// 再將該 json 物件透過 JSON.stringify(jsonObj) 轉成 json 字串送出
+				var jsonString = JSON.stringify(jsonObj);
+				console.log(jsonString);
 			}
 			
 			// 修改
