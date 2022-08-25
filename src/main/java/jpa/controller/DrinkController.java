@@ -35,10 +35,18 @@ public class DrinkController extends HttpServlet {
 		String name = req.getParameter("name");
 		String amount = req.getParameter("amount");
 		String price = req.getParameter("price");
-		// 新增程序
-		boolean isSuccess = drinkService.append(name, amount, price);
-		// 將 status 物件轉 json 字串
-		Status status = new Status("append", isSuccess);
+		// 建立回應資訊
+		Status status = null;
+		try {
+			// 新增程序
+			boolean isSuccess = drinkService.append(name, amount, price);
+			// 將 status 物件轉 json 字串
+			status = new Status("append", isSuccess);
+			
+		} catch (Exception e) {
+			status = new Status("append", false);
+			status.message = e.getMessage();
+		}
 		String jsonStr = gson.toJson(status);
 		// 將 json 字串回應給前端
 		resp.getWriter().print(jsonStr);
@@ -48,8 +56,8 @@ public class DrinkController extends HttpServlet {
 	class Status {
 		String name;
 		boolean isSuccess;
+		String message;
 		public Status(String name, boolean isSuccess) {
-			super();
 			this.name = name;
 			this.isSuccess = isSuccess;
 		}
