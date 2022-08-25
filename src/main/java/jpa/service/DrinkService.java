@@ -35,6 +35,15 @@ public class DrinkService {
 		return isSuccess;
 	}
 	
+	// 取得單筆
+	public Drink find(String id) {
+		if(id == null || !id.chars().allMatch(Character::isDigit)) {
+			return null;
+		}
+		Drink drink = drinkDao.get(Integer.parseInt(id));
+		return drink;
+	}
+	
 	// 修改 I
 	public boolean modify(String id, String name, String amount, String price) {
 		// 資料驗證
