@@ -8,20 +8,21 @@
 		<meta charset="UTF-8">
 		<title>Cart 購物車</title>
 		<script type="text/javascript">
-		// 刪除
-		function remove(id) {
-			xhttp.onreadystatechange = function() {
-				if(xhttp.readyState == xhttp.DONE && xhttp.status == 200) {
-					console.log(xhttp.responseText);
-					window.location.href = '${ pageContext.request.contextPath }/mvc/cart/book/';
-				}
-			};
-			var url = '${ pageContext.request.contextPath }/mvc/cart/book/' + id;
-			// Send a request
-			xhttp.open("DELETE", url);
-			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xhttp.send();
-		}
+			var xhttp = new XMLHttpRequest();
+			// 刪除
+			function remove(id) {
+				xhttp.onreadystatechange = function() {
+					if(xhttp.readyState == xhttp.DONE && xhttp.status == 200) {
+						console.log(xhttp.responseText);
+						window.location.href = '${ pageContext.request.contextPath }/mvc/cart/book/';
+					}
+				};
+				var url = '${ pageContext.request.contextPath }/mvc/cart/book/' + id;
+				// Send a request
+				xhttp.open("DELETE", url);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send();
+			}
 		</script>
 	</head>
 	<body style="padding: 15px">
