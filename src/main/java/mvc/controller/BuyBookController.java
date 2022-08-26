@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import mvc.entity.User;
 import mvc.service.BookService;
 
 @WebServlet("/mvc/buy/book/")
@@ -26,6 +28,12 @@ public class BuyBookController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Integer book_id = Integer.parseInt(req.getParameter("book_id")); 
+		Integer qty = Integer.parseInt(req.getParameter("qty"));
+		HttpSession session = req.getSession(false);
+		User user = (User)session.getAttribute("user");
+		Integer user_id = user.getId();
+		
 		
 	}
 	
