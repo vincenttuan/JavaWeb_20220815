@@ -28,7 +28,6 @@ public class Server {
 		sessions.stream()
 				.filter(s -> s.isOpen())
 				.forEach(s -> s.getAsyncRemote().sendText(message + " " + new Date()));
-		
 	}
 	
 	@OnMessage // 接收資訊
