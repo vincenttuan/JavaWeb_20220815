@@ -12,11 +12,13 @@ import javax.servlet.http.HttpSession;
 
 import mvc.entity.User;
 import mvc.service.BookService;
+import mvc.service.CartService;
 
 @WebServlet("/mvc/buy/book/")
 public class BuyBookController extends HttpServlet {
 	
 	private BookService bookService = new BookService();
+	private CartService cartService = new CartService();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,12 +30,14 @@ public class BuyBookController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Integer book_id = Integer.parseInt(req.getParameter("book_id")); 
+		Integer bookId = Integer.parseInt(req.getParameter("book_id")); 
 		Integer qty = Integer.parseInt(req.getParameter("qty"));
 		HttpSession session = req.getSession(false);
 		User user = (User)session.getAttribute("user");
-		Integer user_id = user.getId();
+		Integer userId= user.getId();
 		
+		cartService.add(userId, bookId, qty);
+		resp.getWriter().println("cart add ok");
 		
 	}
 	
