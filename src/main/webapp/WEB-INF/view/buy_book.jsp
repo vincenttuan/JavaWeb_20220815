@@ -35,7 +35,7 @@
 									</td>
 									<td>
 										<button type="submit" class="pure-button pure-button-primary">
-											購買
+										購買
 										</button>
 									</td>
 								</tr>
