@@ -85,9 +85,11 @@ public class CartDao extends BaseDao {
 	public List<Cart> queryAll(Integer userId) {
 		List<Cart> carts = new ArrayList<>();
 		String sql = "select id, user_id, book_id, qty, subtotal, createtime from cart where user_id=? order by id";
+		System.out.println(sql);
+		System.out.println(userId);
 		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
 			pstmt.setInt(1, userId);
-			ResultSet rs = pstmt.executeQuery(sql);
+			ResultSet rs = pstmt.executeQuery();
 			// 進行 O/R Mapping
 			while(rs.next()) {
 				Cart cart = new Cart();

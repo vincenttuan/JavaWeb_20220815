@@ -2,18 +2,33 @@ package mvc.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import mvc.entity.User;
+import mvc.service.CartService;
 
 @WebServlet("/mvc/cart/book/")
 public class CartBookController extends HttpServlet {
-
+	
+	private CartService cartService = new CartService();
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// 取得登入 user
+		HttpSession session = req.getSession(false);
+		User user = (User)session.getAttribute("user");
+		Integer userId = user.getId();
 		
+		// 重導到指定頁面
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/cart_book.jsp");
+		req.setAttribute("carts", cartService.queryAll(userId));
+		rd.forward(req, resp);
 	}
 
 	@Override
