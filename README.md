@@ -44,5 +44,15 @@ create table if not exists cart (
 	foreign key(book_id) references book(id)
 );
 
+-- book_cart view
+use web;
+create view book_cart
+as
+	select b.id, b.name, b.amount,	
+		   (select sum(qty) as qty from cart where book_id = b.id) as qty,
+		   (b.amount - (select sum(qty) as qty from cart where book_id = b.id)) as new_amount,
+		   b.price, b.user_id 
+	from book b;
+	
 </pre>
 
