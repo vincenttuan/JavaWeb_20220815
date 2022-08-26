@@ -10,7 +10,7 @@
 		
 	</head>
 	<body style="padding: 15px">
-		<form class="pure-form">
+		<div class="pure-form">
 			<fieldset>
 				<legend>Buy Book List</legend>
 				<table class="pure-table pure-table-bordered">
@@ -44,6 +44,6 @@
 					</tbody>
 				</table>
 			</fieldset>
-		</form>
+		</div>
 	</body>
 </html>
