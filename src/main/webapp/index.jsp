@@ -19,9 +19,12 @@
 		<li><a href="${ pageContext.request.contextPath }/form/exchange_form.jsp">exchange_form.jsp</a></li>
 		<li><a href="${ pageContext.request.contextPath }/servlet/lotto">/servlet/lotto (MVC 版)</a></li>
 		<hr />
+		<li><a href="${ pageContext.request.contextPath }/form/drink_form.html">/form/drink_form.html (REST/JPA)</a></li>
+		<hr />
 		<li><a href="${ pageContext.request.contextPath }/mvc/user/">/mvc/user/ (JDBC)</a></li>
 		<li><a href="${ pageContext.request.contextPath }/mvc/book/">/mvc/book/ (REST/JDBC)</a></li>
-		<li><a href="${ pageContext.request.contextPath }/mvc/cart/">/mvc/cart/ (REST/JPA)</a></li>
+		<li><a href="${ pageContext.request.contextPath }/mvc/buy/book/">/mvc/buy/book/ (REST/JDBC)</a></li>
+		<li><a href="${ pageContext.request.contextPath }/mvc/cart/book/">/mvc/cart/book/ (REST/JDBC)</a></li>
 		<li><a href="${ pageContext.request.contextPath }/mvc/chat/">/mvc/chat/ (WebSocket)</a></li>
 	</ul>
 </body>
