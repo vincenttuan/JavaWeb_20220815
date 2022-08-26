@@ -50,9 +50,10 @@
 		</script>
 	</head>
 	<body style="padding: 15px">
+		<%@ include file="/WEB-INF/view/menu.jspf" %>
 		<form id="bookForm" class="pure-form" onsubmit="return submitForm();" method="post" action="${ pageContext.request.contextPath }/mvc/book/">
 			<fieldset>
-				<legend>Book form</legend>
+				<legend>Book 庫存管理</legend>
 				序號: <input type="text" value="${ requestScope.book.id }" id="id" name="id" readonly="readonly" /><p />  
 				書名: <input type="text" value="${ requestScope.book.name }" id="name" name="name" /><p />
 				數量: <input type="number" value="${ requestScope.book.amount }" id="amount" name="amount" /><p />
@@ -64,7 +65,7 @@
 		</form>
 		<form class="pure-form">
 			<fieldset>
-				<legend>Book List</legend>
+				<legend>Book 列表</legend>
 				<table class="pure-table pure-table-bordered">
 					<thead>
 						<tr>

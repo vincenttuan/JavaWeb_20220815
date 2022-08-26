@@ -1,0 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<div>
+<a href="${ pageContext.request.contextPath }/mvc/user/">User 會員</a> | 
+<a href="${ pageContext.request.contextPath }/mvc/book/">Book 庫存</a> | 
+<a href="${ pageContext.request.contextPath }/mvc/buy/book/">Book 購物</a> | 
+<a href="${ pageContext.request.contextPath }/mvc/cart/book/">Book 購物車</a> | 
+<a href="${ pageContext.request.contextPath }/mvc/chat/">Chat 聊天室</a>
+</div>
+<p />

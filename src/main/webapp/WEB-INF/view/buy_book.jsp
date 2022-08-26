@@ -10,12 +10,11 @@
 		
 	</head>
 	<body style="padding: 15px">
+		<%@ include file="/WEB-INF/view/menu.jspf" %>
 		<div class="pure-form">
 			<fieldset>
 				<legend>
-					${ sessionScope.user.username } 您好! Buy Book List
-					|
-					<a href="${ pageContext.request.contextPath }/mvc/cart/book/">查看購物車</a>
+					${ sessionScope.user.username } 您好! Book 購物
 				</legend>
 				<table class="pure-table pure-table-bordered">
 					<thead>

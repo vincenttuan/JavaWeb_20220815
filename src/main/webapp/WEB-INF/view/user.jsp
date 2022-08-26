@@ -9,9 +9,10 @@
 		<title>User form</title>
 	</head>
 	<body style="padding: 15px">
+		<%@ include file="/WEB-INF/view/menu.jspf" %>
 		<form class="pure-form" method="post" action="${ pageContext.request.contextPath }/mvc/user/">
 			<fieldset>
-				<legend>User Form (${ buttonName }模式)</legend>
+				<legend>User 管理 (${ buttonName }模式)</legend>
 				序號: <input type="text" value="${ requestScope.user.id }" id="id" name="id" readonly="readonly" /><p />
 				帳號: <input type="text" value="${ requestScope.user.username }" id="username" name="username" placeholder="請輸入 username" required="required" /><p />
 				${ buttonName=='修改'?'<!--':'' }
@@ -24,7 +25,7 @@
 		</form>
 		<form class="pure-form">
 			<fieldset>
-				<legend>User List</legend>
+				<legend>User 列表</legend>
 				<table class="pure-table pure-table-bordered">
 					<thead>
 						<tr>
