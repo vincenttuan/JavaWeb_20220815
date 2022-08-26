@@ -32,7 +32,23 @@
 			
 			// 設置 websocket
 			function setWebSocket() {
-				
+				// websocket server 端 url
+				var url = 'ws://' + window.location.hostname + ':8080${ pageContext.request.contextPath }/websocket';
+				// 建立 WebSocket 連線
+				webSocket = new WebSocket(url);
+				// 以下就可以操作各種 WebSocket 事件
+				webSocket.onopen = function(event) { // 連線成功
+					console.log('連線成功');
+					conn_button.disabled = true;
+					close_button.disabled = false;
+					send_button.disabled = false;
+				}
+				webSocket.onclose = function(event) { // 連線關閉
+					console.log('連線關閉');
+					conn_button.disabled = false;
+					close_button.disabled = true;
+					send_button.disabled = true;
+				}
 			}
 			
 			// 傳送訊息
