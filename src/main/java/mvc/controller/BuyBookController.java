@@ -38,7 +38,7 @@ public class BuyBookController extends HttpServlet {
 		
 		cartService.add(userId, bookId, qty);
 		//resp.getWriter().println("cart add ok");
-		resp.sendRedirect("/mvc/cart/book/");
+		resp.sendRedirect("/JavaWeb_20220815/mvc/cart/book/");
 	}
 	
 }

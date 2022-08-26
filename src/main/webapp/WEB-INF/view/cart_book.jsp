@@ -12,7 +12,11 @@
 	<body style="padding: 15px">
 		<div class="pure-form">
 			<fieldset>
-				<legend>${ sessionScope.user.username } 的購物車(Cart)資料</legend>
+				<legend>
+					${ sessionScope.user.username } 的購物車(Cart)資料
+					|
+					<a href="${ pageContext.request.contextPath }/mvc/buy/book/">繼續購物</a>
+				</legend>
 				<table class="pure-table pure-table-bordered">
 					<thead>
 						<tr>
