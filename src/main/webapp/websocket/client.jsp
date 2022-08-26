@@ -6,6 +6,42 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/pure-min.css">
 		<meta charset="UTF-8">
 		<title>WebSocket Client</title>
+		<script type="text/javascript">
+			var webSocket = null;
+			// 網頁載入成功
+			window.onload = function() {
+				conn_button.disabled = false;
+				close_button.disabled = true;
+				send_button.disabled = true;
+				// 按下 conn_button
+				conn_button.addEventListener("click", function() {
+					setWebSocket();
+				});
+				// 按下 close_button
+				close_button.addEventListener("click", function() {
+					if(webSocket != null) {
+						webSocket.close();
+						webSocket = null;
+					}
+				});
+				// 按下 send_button
+				send_button.addEventListener("click", function() {
+					sendMessage();
+				});
+			};
+			
+			// 設置 websocket
+			function setWebSocket() {
+				
+			}
+			
+			// 傳送訊息
+			function sendMessage() {
+				
+			}
+			
+			
+		</script>
 	</head>
 	<body>
 		<body style="padding: 15px">
