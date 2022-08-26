@@ -32,8 +32,22 @@ public class CartBookController extends HttpServlet {
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Integer id = getId(req);
+		cartService.delete(id);
 		
+		String contextName = req.getServletContext().getServletContextName(); // JavaWeb_20220815
+		resp.sendRedirect("/" + contextName + "/mvc/cart/book/");  // 重導
+	}
+	
+	private Integer getId(HttpServletRequest req) {
+		// 取得 path info 資料
+		String pathInfo = req.getPathInfo();
+		// 去除 path info 的前導 "/" 變為 path variable
+		String pathVariable = pathInfo.replace("/", "");
+		// 去除 * 號
+		pathVariable = pathVariable.replace("*", "");
+		return Integer.parseInt(pathVariable);
 	}
 	
 }
