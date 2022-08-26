@@ -27,7 +27,16 @@ public class CartService {
 	
 	// 刪除
 	public int delete(Integer id) {
-		return cartDao.delete(id);
+		Cart cart = cartDao.get(id);
+		int bookId = cart.getBookId(); 
+		int qty = cart.getQty();
+		int rowcount = cartDao.delete(id);
+		if(rowcount > 0) {
+			Book book = bookDao.get(bookId);
+			book.setAmount(book.getAmount() + qty);
+			bookDao.update(book);
+		}
+		return rowcount;
 	}
 	
 	// 查詢所有 cart by userId

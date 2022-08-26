@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import mvc.entity.User;
 import mvc.service.CartService;
 
-@WebServlet("/mvc/cart/book/")
+@WebServlet("/mvc/cart/book/*")
 public class CartBookController extends HttpServlet {
 	
 	private CartService cartService = new CartService();
@@ -35,9 +35,7 @@ public class CartBookController extends HttpServlet {
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer id = getId(req);
 		cartService.delete(id);
-		
-		String contextName = req.getServletContext().getServletContextName(); // JavaWeb_20220815
-		resp.sendRedirect("/" + contextName + "/mvc/cart/book/");  // 重導
+		resp.getWriter().println("delete ok");
 	}
 	
 	private Integer getId(HttpServletRequest req) {

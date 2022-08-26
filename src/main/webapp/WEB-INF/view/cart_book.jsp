@@ -7,7 +7,22 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/pure-min.css">
 		<meta charset="UTF-8">
 		<title>Cart 購物車</title>
-		
+		<script type="text/javascript">
+		// 刪除
+		function remove(id) {
+			xhttp.onreadystatechange = function() {
+				if(xhttp.readyState == xhttp.DONE && xhttp.status == 200) {
+					console.log(xhttp.responseText);
+					window.location.href = '${ pageContext.request.contextPath }/mvc/cart/book/';
+				}
+			};
+			var url = '${ pageContext.request.contextPath }/mvc/cart/book/' + id;
+			// Send a request
+			xhttp.open("DELETE", url);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send();
+		}
+		</script>
 	</head>
 	<body style="padding: 15px">
 		<%@ include file="/WEB-INF/view/menu.jspf" %>
@@ -31,7 +46,9 @@
 								<td>${ cart.subtotal }</td>
 								<td>${ cart.createtime }</td>
 								<td>
-									<button type="button" class="pure-button pure-button-primary">
+									<button type="button" 
+										onclick="remove(${ cart.id })"
+										class="pure-button pure-button-primary">
 										刪除
 									</button>
 								</td>
