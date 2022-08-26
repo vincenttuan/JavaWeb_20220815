@@ -9,6 +9,7 @@
 	</head>
 	<body>
 		<body style="padding: 15px">
+			<%@ include file="/WEB-INF/view/menu.jspf" %>
 			<form class="pure-form">
 				<fieldset>
 					<legend>WebSocket Client</legend>
