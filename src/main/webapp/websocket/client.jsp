@@ -58,7 +58,8 @@
 			
 			// 傳送訊息
 			function sendMessage() {
-				
+				var msg = '${ sessionScope.user.username } 說:' + message.value;
+				webSocket.send(msg);
 			}
 			
 			
