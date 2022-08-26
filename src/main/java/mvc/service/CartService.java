@@ -31,11 +31,6 @@ public class CartService {
 		int bookId = cart.getBookId(); 
 		int qty = cart.getQty();
 		int rowcount = cartDao.delete(id);
-		if(rowcount > 0) {
-			Book book = bookDao.get(bookId);
-			book.setAmount(book.getAmount() + qty);
-			bookDao.update(book);
-		}
 		return rowcount;
 	}
 	

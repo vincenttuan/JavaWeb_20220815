@@ -91,7 +91,11 @@ public class BookDao extends BaseDao {
 				book.setId(rs.getInt("id"));
 				book.setName(rs.getString("name"));
 				//book.setAmount(rs.getInt("amount"));
-				book.setAmount(rs.getInt("new_amount"));
+				if(rs.getString("new_amount") == null) {
+					book.setAmount(rs.getInt("amount"));
+				} else {
+					book.setAmount(rs.getInt("new_amount"));
+				}
 				book.setPrice(rs.getInt("price"));
 				book.setUserId(rs.getInt("user_id"));
 				// 將 book 紀錄注入到 books 的集合中
