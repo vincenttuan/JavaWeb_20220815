@@ -49,6 +49,11 @@
 					close_button.disabled = true;
 					send_button.disabled = true;
 				}
+				webSocket.onmessage = function(event) { // 接收訊息
+					var msg = event.data;
+					console.log('接收訊息: ' + msg);
+					message_display.insertAdjacentHTML('afterbegin', msg + '<br />');
+				}
 			}
 			
 			// 傳送訊息
