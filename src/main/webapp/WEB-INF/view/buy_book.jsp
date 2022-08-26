@@ -12,7 +12,7 @@
 	<body style="padding: 15px">
 		<div class="pure-form">
 			<fieldset>
-				<legend>Buy Book List</legend>
+				<legend>${ sessionScope.user.username } 您好! Buy Book List</legend>
 				<table class="pure-table pure-table-bordered">
 					<thead>
 						<tr>
