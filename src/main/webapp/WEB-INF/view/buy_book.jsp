@@ -21,25 +21,25 @@
 					</thead>
 					<tbody>
 						<c:forEach var="book" items="${ requestScope.books }">
-						<form method="post" action="${ pageContext.request.contextPath }/mvc/buy/book/">
-							<tr>
-								<td>
-									<input type="hidden" value="${ book.id }" id="book_id" name="book_id" />
-									${ book.id }
-								</td>
-								<td>${ book.name }</td>
-								<td>${ book.amount }</td>
-								<td>${ book.price }</td>
-								<td>
-									<input type="number" id="qty" name="qty" required="required" />
-								</td>
-								<td>
-									<button type="submit" class="pure-button pure-button-primary">
-										購買
-									</button>
-								</td>
-							</tr>
-						</form>
+							<form method="post" action="${ pageContext.request.contextPath }/mvc/buy/book/">
+								<tr>
+									<td>
+										<input type="hidden" value="${ book.id }" id="book_id" name="book_id" />
+										${ book.id }
+									</td>
+									<td>${ book.name }</td>
+									<td>${ book.amount }</td>
+									<td>${ book.price }</td>
+									<td>
+										<input type="number" id="qty" name="qty" required="required" />
+									</td>
+									<td>
+										<button type="submit" class="pure-button pure-button-primary">
+											購買
+										</button>
+									</td>
+								</tr>
+							</form>
 						</c:forEach>
 					</tbody>
 				</table>
