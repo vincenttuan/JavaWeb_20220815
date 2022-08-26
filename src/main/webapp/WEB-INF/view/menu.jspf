@@ -5,6 +5,6 @@
 <a href="${ pageContext.request.contextPath }/mvc/book/">Book 庫存</a> | 
 <a href="${ pageContext.request.contextPath }/mvc/buy/book/">Book 購物</a> | 
 <a href="${ pageContext.request.contextPath }/mvc/cart/book/">Book 購物車</a> | 
-<a href="${ pageContext.request.contextPath }/mvc/chat/">Chat 聊天室</a>
+<a href="${ pageContext.request.contextPath }/websocket/client.jsp">Chat 聊天室</a>
 </div>
 <p />

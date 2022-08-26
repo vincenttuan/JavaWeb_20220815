@@ -25,7 +25,7 @@
 		<li><a href="${ pageContext.request.contextPath }/mvc/book/">/mvc/book/ (庫存 REST/JDBC)</a></li>
 		<li><a href="${ pageContext.request.contextPath }/mvc/buy/book/">/mvc/buy/book/ (購物 REST/JDBC)</a></li>
 		<li><a href="${ pageContext.request.contextPath }/mvc/cart/book/">/mvc/cart/book/ (購物車 REST/JDBC)</a></li>
-		<li><a href="${ pageContext.request.contextPath }/mvc/chat/">/mvc/chat/ (聊天室 WebSocket)</a></li>
+		<li><a href="${ pageContext.request.contextPath }/websocket/client.jsp">/websocket/client.jsp (聊天室 WebSocket)</a></li>
 	</ul>
 </body>
 </html>
