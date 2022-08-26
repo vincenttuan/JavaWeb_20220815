@@ -24,7 +24,8 @@ public class BuyBookController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 重導到指定頁面
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/buy_book.jsp");
-		req.setAttribute("books", bookService.queryAll());
+		//req.setAttribute("books", bookService.queryAll()); // 查詢全部
+		req.setAttribute("books", bookService.queryBookCart()); // 查詢全部 (book庫存數量扣除購物車數量)
 		rd.forward(req, resp);
 	}
 

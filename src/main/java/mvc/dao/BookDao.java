@@ -79,6 +79,30 @@ public class BookDao extends BaseDao {
 		return books;		
 	}
 	
+	// 查詢全部(book庫存數量扣除購物車數量)
+	public List<Book> queryBookCart() {
+		List<Book> books = new ArrayList<>();
+		String sql = "select id, name, amount, qty, new_amount, price, user_id from book_cart order by id";
+		try(Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);) {
+			// 進行 O/R Mapping
+			while(rs.next()) {
+				Book book = new Book();
+				book.setId(rs.getInt("id"));
+				book.setName(rs.getString("name"));
+				//book.setAmount(rs.getInt("amount"));
+				book.setAmount(rs.getInt("new_amount"));
+				book.setPrice(rs.getInt("price"));
+				book.setUserId(rs.getInt("user_id"));
+				// 將 book 紀錄注入到 books 的集合中
+				books.add(book);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return books;		
+	}
+	
 	// 查詢單筆(根據 id)
 	public Book get(Integer id) {
 		Book book = null;

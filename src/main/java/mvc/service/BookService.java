@@ -55,6 +55,11 @@ public class BookService {
 		return bookDao.queryAll();
 	}
 	
+	// 查詢全部 (book庫存數量扣除購物車數量)
+	public List<Book> queryBookCart() {
+		return bookDao.queryBookCart();
+	}
+	
 	// 查詢單筆 book
 	public Book get(Integer id) {
 		return bookDao.get(id);
